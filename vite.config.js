@@ -1,13 +1,17 @@
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+import tailwindcss from '@tailwindcss/vite';
+
 export default defineConfig({
     plugins: [
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             refresh: true,
-            buildDirectory: 'dist' // Ganti output directory
+            buildDirectory: 'dist' // Tambahkan ini
         }),
         tailwindcss(),
     ],
     build: {
-        outDir: 'public/dist' // Alternatif lain
+        outDir: 'public/dist' // Dan ini
     }
 });
