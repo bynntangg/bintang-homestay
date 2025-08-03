@@ -5,422 +5,685 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bintang Homestay | Penginapan Nyaman di Watukarung</title>
-    @vite('resources/css/app.css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <title>Bintang Homestay | Penginapan Premium di Watukarung, Pacitan</title>
+    <meta name="description"
+        content="Penginapan nyaman dengan fasilitas lengkap di Pantai Watukarung, Pacitan. Tempat menginap terbaik untuk liburan Anda dengan pemandangan pantai yang menakjubkan.">
+    <meta name="keywords"
+        content="homestay watukarung, penginapan pacitan, bintang homestay, wisata pacitan, pantai watukarung">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Bintang Homestay | Penginapan Premium di Watukarung">
+    <meta property="og:description" content="Penginapan nyaman dengan fasilitas lengkap di Pantai Watukarung, Pacitan.">
+    <meta property="og:image" content="https://bintanghomestay.com/images/social-preview.jpg">
+    <meta property="og:url" content="https://bintanghomestay.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bintang Homestay | Penginapan Premium di Watukarung">
+    <meta name="twitter:description"
+        content="Penginapan nyaman dengan fasilitas lengkap di Pantai Watukarung, Pacitan.">
+    <meta name="twitter:image" content="https://bintanghomestay.com/images/social-preview.jpg">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- Animate on Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
-        /* Global Styles */
+        :root {
+            --primary: #3B82F6;
+            --primary-dark: #1D4ED8;
+            --primary-light: #93C5FD;
+            --secondary: #F97316;
+            --secondary-dark: #EA580C;
+            --secondary-light: #FDBA74;
+            --dark: #030712;
+            --dark-light: #1F2937;
+            --gray: #6B7280;
+            --gray-light: #E5E7EB;
+            --light: #F9FAFB;
+            --white: #FFFFFF;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+        }
+
+        /* Base Styles */
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--white);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        .hero-overlay {
-            background: linear-gradient(to right, rgba(3, 7, 18, 0.85), rgba(7, 29, 73, 0.7));
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
         }
 
-        /* Navbar Styles */
-        .navbar-ocean {
-            background: rgba(3, 7, 18, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.15);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
 
-        .navbar-ocean.scrolled {
-            background: rgba(3, 7, 18, 0.9);
-            box-shadow: 0 4px 30px rgba(2, 6, 23, 0.25);
+        img {
+            max-width: 100%;
+            height: auto;
         }
 
-        .nav-container {
-            max-width: 1280px;
-            padding: 1rem 1.5rem;
+        .text-balance {
+            text-wrap: balance;
         }
 
-        .logo-wave {
-            background: linear-gradient(135deg, rgba(147, 197, 253, 0.9) 0%, rgba(96, 165, 250, 0.95) 100%);
+        /* Utility Classes */
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        .bg-gradient-secondary {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+        }
+
+        .text-gradient-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 2px 4px rgba(7, 29, 73, 0.25);
         }
 
-        .nav-pill {
-            padding: 0.5rem 1rem;
-            margin: 0 0.25rem;
-            border-radius: 9999px;
-            font-weight: 500;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background: rgba(30, 58, 138, 0.3);
-            color: rgba(219, 234, 254, 0.9);
-            border: 1px solid rgba(59, 130, 246, 0.15);
-            font-size: 0.9rem;
-        }
-
-        @media (min-width: 1024px) {
-            .nav-pill {
-                padding: 0.75rem 1.5rem;
-                margin: 0 0.5rem;
-                font-size: 1rem;
-            }
-        }
-
-        .nav-pill:hover {
-            transform: translateY(-2px);
-            background: rgba(29, 78, 216, 0.4);
-            color: white;
-            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.15);
-            border-color: rgba(59, 130, 246, 0.3);
-        }
-
-        .nav-pill.active {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.6) 0%, rgba(29, 78, 216, 0.7) 100%);
-            color: white;
-            border-color: rgba(147, 197, 253, 0.5);
-        }
-
-        .nav-button-ocean {
-            background: linear-gradient(135deg, rgba(249, 168, 38, 0.95) 0%, rgba(234, 88, 12, 0.9) 100%);
-            color: white;
-            padding: 0.5rem 1.25rem;
-            border-radius: 9999px;
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(5, 11, 26, 0.25);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            font-size: 0.9rem;
-        }
-
-        @media (min-width: 1024px) {
-            .nav-button-ocean {
-                padding: 0.75rem 2rem;
-                font-size: 1rem;
-            }
-        }
-
-        .nav-button-ocean:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(234, 88, 12, 0.25);
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.95) 0%, rgba(234, 88, 12, 0.95) 100%);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            display: none;
-        }
-
-        .mobile-menu-container.show {
-            display: block;
-        }
-
-        .mobile-menu-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-
-        .mobile-menu {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 85%;
-            max-width: 320px;
-            height: 100%;
-            background: rgba(3, 7, 18, 0.95);
-            border-left: 1px solid rgba(30, 64, 175, 0.3);
-            box-shadow: -10px 0 30px rgba(2, 6, 23, 0.5);
-            overflow-y: auto;
-            transform: translateX(100%);
-            transition: transform 0.3s ease-out;
-            padding: 1.5rem;
-        }
-
-        .mobile-menu.open {
-            transform: translateX(0);
-        }
-
-        .mobile-nav-item {
-            padding: 0.75rem 1.25rem;
-            margin: 0.25rem 0;
-            border-radius: 9999px;
-            background: rgba(30, 58, 138, 0.3);
-            color: rgba(219, 234, 254, 0.9);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(59, 130, 246, 0.1);
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .mobile-nav-item:hover,
-        .mobile-nav-item.active {
-            background: rgba(29, 78, 216, 0.4);
-            color: white;
-        }
-
-        .mobile-menu-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            color: white;
-            font-size: 1.5rem;
-            background: transparent;
-            border: none;
-            cursor: pointer;
+        .text-gradient-secondary {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         /* Hero Section */
         .hero-section {
+            position: relative;
             height: 100vh;
-            min-height: 600px;
+            min-height: 700px;
             max-height: 1200px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(3, 7, 18, 0.2) 0%, rgba(3, 7, 18, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .hero-content-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 0 1.5rem;
         }
 
         .hero-content {
-            background: rgba(3, 7, 18, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(59, 130, 246, 0.15);
-            box-shadow: 0 10px 30px rgba(2, 6, 23, 0.5);
-            padding: 1.5rem;
-            width: 90%;
             max-width: 800px;
-        }
-
-        @media (min-width: 768px) {
-            .hero-content {
-                padding: 2rem;
-            }
+            margin: 0 auto;
+            padding: 2.5rem;
+            background: rgba(3, 7, 18, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 1rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 20px 40px rgba(2, 6, 23, 0.5);
         }
 
         .hero-title {
-            font-size: 2rem;
-            line-height: 1.2;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
         }
 
-        @media (min-width: 768px) {
-            .hero-title {
-                font-size: 3rem;
-            }
+        .hero-title .highlight-text {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title .highlight-text::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            z-index: -1;
+            opacity: 0.7;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: highlight 1.5s ease-in-out forwards 1s;
         }
 
         .hero-subtitle {
-            font-size: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .hero-subtitle {
-                font-size: 1.25rem;
-            }
-        }
-
-        /* Video Background */
-        .video-bg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-        }
-
-        /* Room Card Styles */
-        .room-card {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            height: auto;
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 1024px) {
-            .room-card {
-                height: 100%;
-                margin-bottom: 0;
-            }
-        }
-
-        .room-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .room-badge {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-
-        @media (min-width: 768px) {
-            .room-badge {
-                top: 1rem;
-                right: 1rem;
-                padding: 0.25rem 1rem;
-                font-size: 0.75rem;
-            }
-        }
-
-        .price-tag {
             font-size: 1.25rem;
-            font-weight: 700;
-            color: #1E40AF;
+            color: var(--primary-light);
+            margin-bottom: 2rem;
+            max-width: 600px;
         }
 
-        @media (min-width: 768px) {
-            .price-tag {
-                font-size: 1.5rem;
-            }
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            color: var(--white);
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
         }
 
-        .per-night {
-            font-size: 0.75rem;
-            color: #6B7280;
-        }
-
-        @media (min-width: 768px) {
-            .per-night {
-                font-size: 0.875rem;
-            }
-        }
-
-        .amenity-icon {
-            color: #3B82F6;
-            margin-right: 0.5rem;
-            font-size: 0.875rem;
-        }
-
-        /* Room Swiper */
-        .room-swiper {
-            height: 250px;
-            min-height: 250px;
-        }
-
-        @media (min-width: 768px) {
-            .room-swiper {
-                height: 300px;
-                min-height: 300px;
-            }
-        }
-
-        .room-swiper .swiper-slide {
-            height: 100%;
-        }
-
-        /* Gallery Grid */
-        .gallery-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .gallery-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        /* Lightbox */
-        #lightbox {
+        /* Navbar Styles */
+        .navbar-ocean {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            z-index: 99999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 1rem;
-        }
-
-        .lightbox-container {
-            width: 100%;
-            max-width: 1200px;
-            height: 100%;
-            max-height: 90vh;
-            position: relative;
-        }
-
-        .lightbox-swiper {
-            height: calc(100% - 100px);
-            width: 100%;
-        }
-
-        .thumbnail-swiper {
-            height: 80px;
+            background: rgba(3, 7, 18, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
             padding: 0.5rem 0;
-            margin-top: 10px;
         }
 
-        .thumbnail-swiper .swiper-slide {
-            width: 80px;
+        .navbar-ocean.scrolled {
+            background: rgba(3, 7, 18, 0.95);
+            box-shadow: 0 4px 30px rgba(2, 6, 23, 0.25);
+            padding: 0.25rem 0;
+        }
+
+        .navbar-container {
+            max-width: 1320px;
+            width: 100%;
+            padding: 0 1.5rem;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            /* Tambahkan ini */
+        }
+
+        /* Tambahkan/modifikasi bagian ini di CSS Anda */
+        .logo-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-weight: 700;
+            color: var(--white);
+            z-index: 1001;
+            margin-right: auto;
+            /* Memberikan ruang di sebelah kanan */
+            padding: 0.5rem 0;
+        }
+
+        .logo-brand img {
+            width: 60px;
             height: 60px;
-            opacity: 0.6;
-            transition: opacity 0.3s;
+            margin-right: 0;
+            margin-bottom: 0.25rem;
+        }
+
+        .logo-brand .logo-text {
+            display: none;
+            /* Sembunyikan teks di mobile jika perlu */
+        }
+
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin-bottom: 0;
+            padding-left: 0;
+        }
+
+        .nav-item {
+            margin: 0 0.5rem;
+        }
+
+        .nav-link {
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 500;
+            color: rgba(219, 234, 254, 0.9);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: rgba(29, 78, 216, 0.4);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.6) 0%, rgba(29, 78, 216, 0.7) 100%);
+            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.15);
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(5, 11, 26, 0.25);
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-book:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(234, 88, 12, 0.3);
+            color: var(--white);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 320px;
+            height: 100vh;
+            background: var(--dark);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            padding: 5rem 2rem 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            right: 1.5rem;
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
             cursor: pointer;
         }
 
-        .thumbnail-swiper .swiper-slide-thumb-active {
+        /* Mobile Menu Styles */
+        .mobile-nav-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-link {
+            color: var(--white);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+            /* Ini yang membuat rounded pill */
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0.25rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav-link.active {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.6) 0%, rgba(29, 78, 216, 0.7) 100%);
+            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.15);
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link:focus {
+            background: rgba(29, 78, 216, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .mobile-nav-link i {
+            margin-right: 1rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--secondary-light));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Features Section */
+        .features-section {
+            background-color: var(--light);
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(29, 78, 216, 0.1) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            color: var(--primary);
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--dark-light);
+        }
+
+        .feature-text {
+            color: var(--gray);
+        }
+
+        /* Rooms Section */
+        .rooms-section {
+            background-color: var(--white);
+        }
+
+        .room-card {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .room-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .room-swiper {
+            height: 300px;
+        }
+
+        .room-swiper .swiper-slide {
+            overflow: hidden;
+        }
+
+        .room-swiper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .room-card:hover .room-swiper img {
+            transform: scale(1.05);
+        }
+
+        .room-details {
+            padding: 1.5rem;
+        }
+
+        .room-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-light);
+        }
+
+        .room-price {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .room-price span {
+            font-size: 0.875rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .room-amenities {
+            margin-bottom: 1.5rem;
+        }
+
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+        }
+
+        .amenity-item i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background-color: var(--light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: 0.75rem;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            aspect-ratio: 1/1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
             opacity: 1;
+        }
+
+        .gallery-caption {
+            color: var(--white);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-container {
+            width: 90%;
+            max-width: 1200px;
+            position: relative;
         }
 
         .lightbox-close {
             position: absolute;
-            top: -40px;
+            top: -50px;
             right: 0;
-            color: white;
+            color: var(--white);
             font-size: 1.5rem;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             cursor: pointer;
-            z-index: 10;
-        }
-
-        .lightbox-close:hover {
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-            color: white;
             background: rgba(0, 0, 0, 0.5);
             width: 40px;
             height: 40px;
@@ -428,94 +691,656 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            border: none;
         }
 
-        .swiper-button-next:after,
-        .swiper-button-prev:after {
-            font-size: 1.2rem;
+        .lightbox-slider {
+            height: 70vh;
         }
 
-        .swiper-button-next:hover,
-        .swiper-button-prev:hover {
-            background: rgba(0, 0, 0, 0.8);
+        .lightbox-slider .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Testimonial */
-        .testimonial-swiper {
-            padding-bottom: 2rem;
+        .lightbox-slider img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
         }
 
-        /* Section Padding */
-        .section-py {
-            padding-top: 3rem;
-            padding-bottom: 3rem;
+        .lightbox-thumbs {
+            height: 100px;
+            margin-top: 1rem;
+            overflow: hidden;
         }
 
-        @media (min-width: 768px) {
-            .section-py {
-                padding-top: 4rem;
-                padding-bottom: 4rem;
-            }
+        .lightbox-thumbs .swiper-slide {
+            width: auto;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+            height: 100%;
         }
 
-        /* Container */
-        .section-container {
-            padding-left: 1rem;
-            padding-right: 1rem;
+        .lightbox-thumbs .swiper-slide-thumb-active {
+            opacity: 1;
         }
 
-        @media (min-width: 640px) {
-            .section-container {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
+        .lightbox-thumbs img {
+            width: auto;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
         }
 
-        @media (min-width: 768px) {
-            .section-container {
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: var(--white);
         }
 
-        /* Button Sizes */
-        .btn {
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            height: 100%;
         }
 
-        @media (min-width: 768px) {
-            .btn {
-                padding: 0.75rem 1.5rem;
-                font-size: 1rem;
-            }
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
         }
 
-        /* Text Sizes */
-        .section-title {
-            font-size: 1.75rem;
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
         }
 
-        @media (min-width: 768px) {
-            .section-title {
-                font-size: 2.25rem;
-            }
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .section-subtitle {
-            font-size: 1rem;
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark-light);
+            margin-bottom: 0.25rem;
         }
 
-        @media (min-width: 768px) {
-            .section-subtitle {
-                font-size: 1.25rem;
-            }
+        .testimonial-rating {
+            color: var(--warning);
         }
 
-        /* Utility Classes */
-        .text-balance {
-            text-wrap: balance;
+        .testimonial-text {
+            font-style: italic;
+            color: var(--gray);
+            position: relative;
         }
+
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--primary-light);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .testimonial-text::before {
+            top: -15px;
+            left: -10px;
+        }
+
+        .testimonial-text::after {
+            bottom: -25px;
+            right: -10px;
+        }
+
+        /* Nearby Section */
+        .nearby-section {
+            background: linear-gradient(to bottom, var(--light) 0%, var(--white) 100%);
+        }
+
+        .destination-card {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .destination-image {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .destination-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .destination-card:hover .destination-image img {
+            transform: scale(1.1);
+        }
+
+        .destination-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .destination-content {
+            padding: 1.5rem;
+        }
+
+        .destination-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .destination-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark-light);
+        }
+
+        .destination-description {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .destination-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .destination-distance {
+            display: flex;
+            align-items: center;
+            color: var(--gray);
+        }
+
+        .destination-distance i {
+            margin-right: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .destination-link {
+            color: var(--secondary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+
+        .destination-link i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .destination-link:hover i {
+            transform: translateX(3px);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--light);
+        }
+
+        .contact-card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(29, 78, 216, 0.1) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--primary);
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: var(--dark-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-text {
+            color: var(--gray);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(29, 78, 216, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .map-container {
+            height: 100%;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Booking Section */
+        .booking-section {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(29, 78, 216, 0.05) 100%);
+        }
+
+        .booking-card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .booking-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-platform {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin-right: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 0.25rem;
+        }
+
+        .booking-title {
+            font-size: 1.25rem;
+            color: var(--dark-light);
+            margin-bottom: 1rem;
+        }
+
+        .booking-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .cta-text {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta-primary {
+            background: var(--white);
+            color: var(--primary);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta-primary:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            color: var(--primary);
+        }
+
+        .btn-cta-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            color: var(--white);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 0.75rem;
+        }
+
+        .footer-about {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, var(--secondary), var(--secondary-light));
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.75rem;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-contact-item i {
+            margin-right: 0.75rem;
+            color: var(--primary-light);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .footer-social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-newsletter {
+            margin-top: 1.5rem;
+        }
+
+        .footer-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 50px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-button {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+            color: var(--white);
+            border: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .footer-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 3rem 0 2rem;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-legal-link {
+            color: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .footer-legal-link:hover {
+            color: var(--white);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--success);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            z-index: 999;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 5rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.3);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
 
         /* Animations */
         @keyframes fadeIn {
@@ -528,419 +1353,632 @@
             }
         }
 
-        .animate-fade-in {
-            animation: fadeIn 0.5s ease-out;
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* WhatsApp Button */
-        .whatsapp-btn {
-            width: 50px;
-            height: 50px;
-            font-size: 1.5rem;
-            bottom: 1rem;
-            right: 1rem;
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-20px);
+            }
+
+            60% {
+                transform: translateY(-10px);
+            }
         }
 
-        @media (min-width: 768px) {
-            .whatsapp-btn {
-                width: 60px;
-                height: 60px;
+        @keyframes highlight {
+            from {
+                transform: scaleX(0);
+            }
+
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(16, 185, 129, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1199.98px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .section {
+                padding: 5rem 0;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .btn-book.me-3 {
+                margin-right: 1rem !important;
+            }
+        }
+
+        /* Untuk mobile */
+        @media (max-width: 991.98px) {
+            .logo-brand {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .logo-brand img {
+                margin-right: 0.5rem;
+                margin-bottom: 0;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .section-title {
                 font-size: 1.75rem;
-                bottom: 2rem;
-                right: 2rem;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .cta-text {
+                font-size: 1.1rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-legal {
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .cta-title {
+                font-size: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-cta-primary,
+            .btn-cta-secondary {
+                width: 100%;
+            }
+
+            .whatsapp-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                bottom: 4.5rem;
+                right: 1.5rem;
             }
         }
     </style>
 </head>
 
-<body class="bg-gray-900 text-gray-100 font-sans">
-    <!-- Hero Section with Navbar -->
-    <section id="home" class="hero-section relative flex items-center overflow-hidden">
-        <!-- Hero Video Background -->
-        <div class="absolute inset-0 w-full h-full">
-            <video autoplay muted loop playsinline class="video-bg">
-                <source src="/videos/PantaiWatuKarung.mp4" type="video/mp4">
-                <img src="/images/fallback-hero.jpg" alt="Pantai Watukarung" class="w-full h-full object-cover">
-            </video>
-            <div class="absolute inset-0 bg-gradient-to-b from-blue-900/30 via-slate-900/70 to-blue-900/30"></div>
-        </div>
-
-        <!-- Hero Content -->
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="hero-content mx-auto">
-                <h1 class="hero-title font-bold mb-4 text-balance">Penginapan Nyaman di <span
-                        class="text-blue-300">Pantai Watukarung</span></h1>
-                <p class="hero-subtitle mb-6 text-blue-100 text-balance">Nikmati liburan Anda dengan kenyamanan maksimal
-                    hanya beberapa langkah dari pantai terindah di Pacitan.</p>
-                <div class="flex flex-wrap gap-3">
-                    <a href="#pemesanan"
-                        class="btn bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium flex items-center">
-                        <i class="fas fa-calendar-check mr-2"></i> Pesan Sekarang
-                    </a>
-                    <a href="#kamar"
-                        class="btn bg-white/10 hover:bg-white/20 text-white rounded-lg font-medium border border-white/20 flex items-center">
-                        <i class="fas fa-bed mr-2"></i> Lihat Kamar
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Floating Navbar -->
-        <header class="fixed top-0 left-0 right-0 z-50" x-data="{ isOpen: false, scrolled: false }"
-            @scroll.window="scrolled = (window.pageYOffset > 20)">
-            <nav class="navbar-ocean transition-all duration-400" :class="{ 'scrolled': scrolled }">
-                <div class="nav-container flex justify-between items-center py-2 lg:py-3">
-                    <!-- Logo -->
-                    <div class="flex items-center">
-                        <a href="#home" class="text-xl md:text-2xl font-bold logo-wave flex items-center">
-                            <img src="{{ asset('images/bintang.png') }}" alt="Logo"
-                                class="w-8 h-8 md:w-10 md:h-10 mr-2">
-                            <span class="hidden sm:inline">Bintang Homestay</span>
+<body>
+    <!-- Navbar -->
+    <header class="navbar-ocean" id="navbar">
+        <div class="navbar-container">
+            <!-- Di bagian navbar (header) -->
+            <a href="#home" class="logo-brand">
+                <img src="images/bintang.png" alt="Bintang Homestay" class="logo-img">
+                <span class="logo-text">Bintang Homestay</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list d-flex mb-0">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active">
+                            <i class="fas fa-home me-2"></i> Beranda
                         </a>
-                    </div>
-
-                    <!-- Desktop Navigation -->
-                    <div class="hidden lg:flex items-center space-x-2">
-                        <div class="flex space-x-1">
-                            <a href="#home" class="nav-pill active">
-                                <i class="fas fa-home mr-2"></i>Beranda
-                            </a>
-                            <a href="#fasilitas" class="nav-pill">
-                                <i class="fas fa-umbrella-beach mr-2"></i>Fasilitas
-                            </a>
-                            <a href="#kamar" class="nav-pill">
-                                <i class="fas fa-bed mr-2"></i>Kamar
-                            </a>
-                            <a href="#galeri" class="nav-pill">
-                                <i class="fas fa-camera mr-2"></i>Galeri
-                            </a>
-                            <a href="#wisata" class="nav-pill">
-                                <i class="fas fa-map-marked-alt mr-2"></i>Wisata
-                            </a>
-                            <a href="#testimoni" class="nav-pill">
-                                <i class="fas fa-star mr-2"></i>Testimoni
-                            </a>
-                            <a href="#kontak" class="nav-pill">
-                                <i class="fas fa-phone mr-2"></i>Kontak
-                            </a>
-                        </div>
-                        <a href="#pemesanan" class="nav-button-ocean ml-2">
-                            <i class="fas fa-calendar-check mr-2"></i>Pesan
+                    </li>
+                    <li class="nav-item">
+                        <a href="#fasilitas" class="nav-link">
+                            <i class="fas fa-umbrella-beach me-2"></i> Fasilitas
                         </a>
-                    </div>
-
-                    <!-- Mobile menu button -->
-                    <div class="lg:hidden">
-                        <button @click="isOpen = true" class="text-blue-100 focus:outline-none">
-                            <i class="fas fa-bars text-xl"></i>
-                        </button>
-                    </div>
-                </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#kamar" class="nav-link">
+                            <i class="fas fa-bed me-2"></i> Kamar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#galeri" class="nav-link">
+                            <i class="fas fa-camera me-2"></i> Galeri
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#wisata" class="nav-link">
+                            <i class="fas fa-map-marked-alt me-2"></i> Wisata
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#testimoni" class="nav-link">
+                            <i class="fas fa-star me-2"></i> Testimoni
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#kontak" class="nav-link">
+                            <i class="fas fa-phone me-2"></i> Kontak
+                        </a>
+                    </li>
+                </ul>
             </nav>
 
-            <!-- Mobile Navigation -->
-            <div class="mobile-menu-container" :class="{ 'show': isOpen }" x-show="isOpen" x-transition>
-                <div class="mobile-menu-overlay" @click="isOpen = false"></div>
-                <div class="mobile-menu" :class="{ 'open': isOpen }">
-                    <button class="mobile-menu-close" @click="isOpen = false">
-                        <i class="fas fa-times"></i>
-                    </button>
+            <div class="d-flex align-items-center">
+                <a href="#pemesanan" class="btn-book me-3 d-none d-md-inline-flex">
+                    <i class="fas fa-calendar-check me-2"></i> Pesan Sekarang
+                </a>
 
-                    <div class="flex flex-col space-y-4 mt-12">
-                        <a href="#home" @click="isOpen = false" class="mobile-nav-item active">
-                            <i class="fas fa-home mr-3"></i>Beranda
-                        </a>
-                        <a href="#fasilitas" @click="isOpen = false" class="mobile-nav-item">
-                            <i class="fas fa-umbrella-beach mr-3"></i>Fasilitas
-                        </a>
-                        <a href="#kamar" @click="isOpen = false" class="mobile-nav-item">
-                            <i class="fas fa-bed mr-3"></i>Kamar
-                        </a>
-                        <a href="#galeri" @click="isOpen = false" class="mobile-nav-item">
-                            <i class="fas fa-camera mr-3"></i>Galeri
-                        </a>
-                        <a href="#wisata" @click="isOpen = false" class="mobile-nav-item">
-                            <i class="fas fa-map-marked-alt mr-3"></i>Wisata
-                        </a>
-                        <a href="#testimoni" @click="isOpen = false" class="mobile-nav-item">
-                            <i class="fas fa-star mr-3"></i>Testimoni
-                        </a>
-                        <a href="#kontak" @click="isOpen = false" class="mobile-nav-item">
-                            <i class="fas fa-phone mr-3"></i>Kontak
-                        </a>
-                        <a href="#pemesanan" @click="isOpen = false" class="nav-button-ocean text-center mt-4 py-2">
-                            <i class="fas fa-calendar-check mr-2"></i>Pesan Sekarang
-                        </a>
-                    </div>
-                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <div class="absolute bottom-6 left-0 right-0 flex justify-center">
-            <a href="#fasilitas" class="scroll-down animate-bounce">
-                <i class="fas fa-chevron-down text-2xl"></i>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="#home" class="logo-brand">
+                <img src="images/bintang.png" alt="Bintang Homestay">
+                <span>Bintang Homestay</span>
             </a>
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-    </section>
 
-    <!-- Promo Banner -->
-    <div class="bg-blue-900 text-white py-2 px-4 text-center text-sm md:text-base">
-        <div class="container mx-auto flex flex-wrap items-center justify-center">
-            <span class="font-bold mr-2"><i class="fas fa-gift mr-1"></i>PROMO KHUSUS!</span>
-            <span class="mr-2">Diskon 5% untuk pemesanan minimal 3 malam</span>
-            <a href="#pemesanan" class="underline font-medium whitespace-nowrap">Pesan Sekarang</a>
-        </div>
+        <nav class="mobile-nav">
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item">
+                    <a href="#home" class="mobile-nav-link">
+                        <i class="fas fa-home"></i> Beranda
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#fasilitas" class="mobile-nav-link">
+                        <i class="fas fa-umbrella-beach"></i> Fasilitas
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#kamar" class="mobile-nav-link">
+                        <i class="fas fa-bed"></i> Kamar
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#galeri" class="mobile-nav-link">
+                        <i class="fas fa-camera"></i> Galeri
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#wisata" class="mobile-nav-link">
+                        <i class="fas fa-map-marked-alt"></i> Wisata
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#testimoni" class="mobile-nav-link">
+                        <i class="fas fa-star"></i> Testimoni
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#kontak" class="mobile-nav-link">
+                        <i class="fas fa-phone"></i> Kontak
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <a href="#pemesanan" class="btn-book w-100 mt-3">
+            <i class="fas fa-calendar-check me-2"></i> Pesan Sekarang
+        </a>
     </div>
 
-    <!-- Fasilitas Unggulan -->
-    <section id="fasilitas" class="section-py bg-gray-50">
-        <div class="section-container mx-auto">
-            <div class="text-center mb-12 md:mb-16">
-                <h2 class="section-title font-bold mb-3 text-gray-900">Fasilitas Unggulan</h2>
-                <div class="w-20 h-1.5 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto mb-4 rounded-full"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">Kami menyediakan berbagai fasilitas untuk membuat pengalaman
-                    menginap Anda lebih nyaman dan berkesan</p>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-video-container">
+            <video autoplay muted loop playsinline class="video-bg">
+                <source src="videos/PantaiWatuKarung.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition text-center">
-                    <div class="text-blue-600 mb-3 text-3xl md:text-4xl">
-                        <i class="fas fa-wifi"></i>
-                    </div>
-                    <h3 class="text-lg md:text-xl font-semibold mb-2 text-gray-800">WiFi Cepat</h3>
-                    <p class="text-gray-600 text-sm md:text-base">Akses internet berkecepatan tinggi gratis untuk semua
-                        tamu</p>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition text-center">
-                    <div class="text-blue-600 mb-3 text-3xl md:text-4xl">
-                        <i class="fas fa-umbrella-beach"></i>
-                    </div>
-                    <h3 class="text-lg md:text-xl font-semibold mb-2 text-gray-800">Dekat Pantai</h3>
-                    <p class="text-gray-600 text-sm md:text-base">Hanya 5 menit jalan kaki ke Pantai Watukarung yang
-                        indah</p>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition text-center">
-                    <div class="text-blue-600 mb-3 text-3xl md:text-4xl">
-                        <i class="fas fa-car"></i>
-                    </div>
-                    <h3 class="text-lg md:text-xl font-semibold mb-2 text-gray-800">Parkir Luas</h3>
-                    <p class="text-gray-600 text-sm md:text-base">Area parkir aman dan luas untuk kendaraan tamu</p>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition text-center">
-                    <div class="text-blue-600 mb-3 text-3xl md:text-4xl">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3 class="text-lg md:text-xl font-semibold mb-2 text-gray-800">Dapur Bersama</h3>
-                    <p class="text-gray-600 text-sm md:text-base">Fasilitas dapur lengkap untuk memasak makanan favorit
-                        Anda</p>
+        <div class="hero-content-container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="hero-title">
+                    Homestay's Bintang <span class="highlight-text">Watukarung Beach</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Nikmati liburan Anda dengan kenyamanan maksimal hanya beberapa langkah dari pantai terindah di
+                    Pacitan.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#pemesanan" class="btn-book me-3">
+                        <i class="fas fa-calendar-check me-2"></i> Pesan Sekarang
+                    </a>
+                    <a href="#kamar" class="btn btn-outline-light">
+                        <i class="fas fa-bed me-2"></i> Lihat Kamar
+                    </a>
                 </div>
             </div>
         </div>
+
+        <a href="#fasilitas" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </section>
 
-    <!-- Kamar & Harga -->
-    <section id="kamar" class="section-py bg-white">
-        <div class="section-container mx-auto">
-            <div class="text-center mb-12 md:mb-16">
-                <h2 class="section-title font-bold mb-3 text-gray-900">Pilihan Kamar Kami</h2>
-                <div class="w-20 h-1.5 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto mb-4 rounded-full"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">Temukan kamar yang sesuai dengan kebutuhan Anda</p>
+    <!-- Features Section -->
+    <section class="section features-section" id="fasilitas">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Fasilitas Unggulan</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Kami menyediakan berbagai fasilitas untuk membuat pengalaman menginap Anda lebih nyaman dan berkesan
+                </p>
             </div>
 
-            <div class="flex flex-col lg:flex-row gap-6 md:gap-8 items-stretch justify-center">
-                <!-- Kamar Standard (Double Bed) -->
-                <div class="room-card bg-white rounded-xl overflow-hidden shadow-lg relative w-full lg:w-1/2">
-                    <div class="flex flex-col lg:flex-row h-full">
-                        <!-- Bagian gambar -->
-                        <div class="lg:w-1/2 relative">
-                            <div class="room-badge">TERPOPULER</div>
-                            <div class="swiper room-swiper h-full">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <img src="/images/kamar1.jpeg" alt="Kamar Double Bed"
-                                            class="w-full h-full object-cover">
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="/images/home10.jpeg" alt="Kamar Mandi Standard"
-                                            class="w-full h-full object-cover">
-                                    </div>
-                                </div>
-                                <div class="swiper-pagination"></div>
-                            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-wifi"></i>
                         </div>
-
-                        <!-- Bagian detail -->
-                        <div class="lg:w-1/2 p-4 md:p-6 flex flex-col">
-                            <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-2">Kamar Double Bed</h3>
-                            <p class="text-gray-600 text-sm md:text-base mb-3 md:mb-4">Kamar nyaman dengan kasur double
-                                untuk pasangan atau individu</p>
-
-                            <div class="flex items-center mb-3 md:mb-4">
-                                <span class="price-tag">Rp 350.000</span>
-                                <span class="per-night ml-1">/malam</span>
-                            </div>
-
-                            <div class="border-t border-gray-200 pt-3 md:pt-4 mb-3 md:mb-4">
-                                <h4 class="font-semibold text-gray-800 mb-2 text-sm md:text-base">Fasilitas Kamar:</h4>
-                                <ul class="space-y-1 md:space-y-2 text-sm">
-                                    <li class="flex items-center text-gray-600">
-                                        <i class="fas fa-bed amenity-icon"></i> 1 Double Bed (160x200 cm)
-                                    </li>
-                                    <li class="flex items-center text-gray-600">
-                                        <i class="fas fa-tv amenity-icon"></i> TV 32"
-                                    </li>
-                                    <li class="flex items-center text-gray-600">
-                                        <i class="fas fa-snowflake amenity-icon"></i> AC
-                                    </li>
-                                    <li class="flex items-center text-gray-600">
-                                        <i class="fas fa-wifi amenity-icon"></i> WiFi Gratis
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        <h3 class="feature-title">WiFi Cepat</h3>
+                        <p class="feature-text">
+                            Akses internet berkecepatan tinggi gratis untuk semua tamu dengan jangkauan di seluruh area
+                            homestay.
+                        </p>
                     </div>
                 </div>
 
-                <!-- Kamar Twin (2 Single Beds) -->
-                <div class="room-card bg-white rounded-xl overflow-hidden shadow-lg relative w-full lg:w-1/2">
-                    <div class="flex flex-col lg:flex-row h-full">
-                        <!-- Bagian gambar -->
-                        <div class="lg:w-1/2 relative">
-                            <div class="swiper room-swiper h-full">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <img src="/images/kamar2.jpeg" alt="Kamar Twin Bed"
-                                            class="w-full h-full object-cover">
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="/images/home7.jpeg" alt="Kamar Twin"
-                                            class="w-full h-full object-cover">
-                                    </div>
-                                </div>
-                                <div class="swiper-pagination"></div>
-                            </div>
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-umbrella-beach"></i>
                         </div>
+                        <h3 class="feature-title">Dekat Pantai</h3>
+                        <p class="feature-text">
+                            Hanya 5 menit jalan kaki ke Pantai Watukarung yang indah dengan akses khusus untuk tamu
+                            kami.
+                        </p>
+                    </div>
+                </div>
 
-                        <!-- Bagian detail -->
-                        <div class="lg:w-1/2 p-4 md:p-6 flex flex-col">
-                            <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-2">Kamar Twin Bed</h3>
-                            <p class="text-gray-600 text-sm md:text-base mb-3 md:mb-4">Kamar dengan 2 single bed untuk
-                                teman atau keluarga kecil</p>
-
-                            <div class="flex items-center mb-3 md:mb-4">
-                                <span class="price-tag">Rp 350.000</span>
-                                <span class="per-night ml-1">/malam</span>
-                            </div>
-
-                            <div class="border-t border-gray-200 pt-3 md:pt-4 mb-3 md:mb-4">
-                                <h4 class="font-semibold text-gray-800 mb-2 text-sm md:text-base">Fasilitas Kamar:</h4>
-                                <ul class="space-y-1 md:space-y-2 text-sm">
-                                    <li class="flex items-center text-gray-600">
-                                        <i class="fas fa-bed amenity-icon"></i> 2 Single Bed (90x200 cm)
-                                    </li>
-                                    <li class="flex items-center text-gray-600">
-                                        <i class="fas fa-tv amenity-icon"></i> TV 32"
-                                    </li>
-                                    <li class="flex items-center text-gray-600">
-                                        <i class="fas fa-snowflake amenity-icon"></i> AC
-                                    </li>
-                                    <li class="flex items-center text-gray-600">
-                                        <i class="fas fa-chair amenity-icon"></i> Ruang Lebih Luas
-                                    </li>
-                                </ul>
-                            </div>
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-car"></i>
                         </div>
+                        <h3 class="feature-title">Parkir Luas</h3>
+                        <p class="feature-text">
+                            Area parkir aman dan luas untuk kendaraan tamu dengan sistem keamanan 24 jam.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3 class="feature-title">Dapur Bersama</h3>
+                        <p class="feature-text">
+                            Fasilitas dapur lengkap untuk memasak makanan favorit Anda dengan peralatan modern.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Galeri -->
-    <section id="galeri" class="section-py bg-gray-50">
-        <div class="section-container mx-auto">
-            <div class="text-center mb-12 md:mb-16">
-                <h2 class="section-title font-bold mb-3 text-gray-900">Galeri Kami</h2>
-                <div class="w-20 h-1.5 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto mb-4 rounded-full"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">Lihat suasana dan fasilitas Bintang Homestay</p>
+    <!-- Rooms Section -->
+    <section class="section rooms-section" id="kamar">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Pilihan Kamar Kami</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Temukan kamar yang sesuai dengan kebutuhan Anda dengan fasilitas lengkap dan harga terjangkau
+                </p>
             </div>
 
-            <!-- Grid Kolase Galeri -->
-            <div class="gallery-grid grid mb-6 md:mb-8">
-                <div class="gallery-item cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300 aspect-square"
-                    onclick="openLightbox(0)">
-                    <img src="/images/home.jpeg" alt="Bintang Homestay"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                    <i class="fas fa-search-plus"></i>
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="room-card">
+                        <div class="room-badge">Terpopuler</div>
+                        <div class="room-swiper swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="images/kamar1.jpeg" alt="Kamar Double Bed">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images/home10.jpeg" alt="Kamar Mandi Standard">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images/kamar2.jpeg" alt="Interior Kamar">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="room-details">
+                            <h3 class="room-title">Kamar Double Bed</h3>
+                            <div class="room-price">
+                                Rp 350.000 <span>/ malam</span>
+                            </div>
+                            <div class="room-amenities">
+                                <div class="amenity-item">
+                                    <i class="fas fa-bed"></i> 1 Double Bed (160x200 cm)
+                                </div>
+                                <div class="amenity-item">
+                                    <i class="fas fa-tv"></i> TV 32" dengan channel lengkap
+                                </div>
+                                <div class="amenity-item">
+                                    <i class="fas fa-snowflake"></i> AC dengan pengatur suhu
+                                </div>
+                                <div class="amenity-item">
+                                    <i class="fas fa-wifi"></i> WiFi gratis kecepatan tinggi
+                                </div>
+                                <div class="amenity-item">
+                                    <i class="fas fa-bath"></i> Kamar mandi dengan shower air panas
+                                </div>
+                            </div>
+                            <a href="#pemesanan" class="btn-book w-100">
+                                <i class="fas fa-calendar-check me-2"></i> Pesan Sekarang
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300 aspect-square"
-                    onclick="openLightbox(1)">
-                    <img src="/images/home2.jpeg" alt="Lobby"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                    <i class="fas fa-search-plus"></i>
+
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="room-card">
+                        <div class="room-badge">Keluarga</div>
+                        <div class="room-swiper swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="images/kamar2.jpeg" alt="Kamar Twin Bed">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images/home7.jpeg" alt="Kamar Twin">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="images/kamar1.jpeg" alt="Interior Kamar">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <div class="room-details">
+                            <h3 class="room-title">Kamar Twin Bed</h3>
+                            <div class="room-price">
+                                Rp 350.000 <span>/ malam</span>
+                            </div>
+                            <div class="room-amenities">
+                                <div class="amenity-item">
+                                    <i class="fas fa-bed"></i> 2 Single Bed (90x200 cm)
+                                </div>
+                                <div class="amenity-item">
+                                    <i class="fas fa-tv"></i> TV 32" dengan channel lengkap
+                                </div>
+                                <div class="amenity-item">
+                                    <i class="fas fa-snowflake"></i> AC dengan pengatur suhu
+                                </div>
+                                <div class="amenity-item">
+                                    <i class="fas fa-wifi"></i> WiFi gratis kecepatan tinggi
+                                </div>
+                                <div class="amenity-item">
+                                    <i class="fas fa-bath"></i> Kamar mandi dengan shower air panas
+                                </div>
+                            </div>
+                            <a href="#pemesanan" class="btn-book w-100">
+                                <i class="fas fa-calendar-check me-2"></i> Pesan Sekarang
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300 aspect-square"
-                    onclick="openLightbox(2)">
-                    <img src="/images/home1.jpeg" alt="Area Parkir"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                    <i class="fas fa-search-plus"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery-section" id="galeri">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Galeri Kami</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Jelajahi suasana dan fasilitas Bintang Homestay melalui koleksi foto kami
+                </p>
+            </div>
+
+            <div class="gallery-grid" data-aos="fade-up" data-aos-delay="200">
+                <div class="gallery-item" onclick="openLightbox(0)">
+                    <img src="images/home.jpeg" alt="Bintang Homestay">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h4>Fasade Homestay</h4>
+                            <p>Tampak depan Bintang Homestay</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300 aspect-square"
-                    onclick="openLightbox(3)">
-                    <img src="/images/home3.jpeg" alt="Shower"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                    <i class="fas fa-search-plus"></i>
+
+                <div class="gallery-item" onclick="openLightbox(1)">
+                    <img src="images/home2.jpeg" alt="Lobby">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h4>Area Lobby</h4>
+                            <p>Ruang tamu yang nyaman</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300 aspect-square"
-                    onclick="openLightbox(4)">
-                    <img src="/images/home4.jpeg" alt="Pemandangan"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                    <i class="fas fa-search-plus"></i>
+
+                <div class="gallery-item" onclick="openLightbox(2)">
+                    <img src="images/home1.jpeg" alt="Area Parkir">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h4>Area Parkir</h4>
+                            <p>Parkir luas dan aman</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300 aspect-square"
-                    onclick="openLightbox(5)">
-                    <img src="/images/home11.jpeg" alt="Lantai 1"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                    <i class="fas fa-search-plus"></i>
+
+                <div class="gallery-item" onclick="openLightbox(3)">
+                    <img src="images/home3.jpeg" alt="Shower">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h4>Kamar Mandi</h4>
+                            <p>Bersih dengan air panas</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300 aspect-square"
-                    onclick="openLightbox(6)">
-                    <img src="/images/home6.jpeg" alt="Lantai 2"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                    <i class="fas fa-search-plus"></i>
+
+                <div class="gallery-item" onclick="openLightbox(4)">
+                    <img src="images/home4.jpeg" alt="Pemandangan">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h4>Pemandangan</h4>
+                            <p>View dari kamar</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300 aspect-square"
-                    onclick="openLightbox(7)">
-                    <img src="/images/home12.jpeg" alt="Logo"
-                        class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                    <i class="fas fa-search-plus"></i>
+
+                <div class="gallery-item" onclick="openLightbox(5)">
+                    <img src="images/home11.jpeg" alt="Lantai 1">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h4>Koridor Lantai 1</h4>
+                            <p>Akses ke kamar</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(6)">
+                    <img src="images/home6.jpeg" alt="Lantai 2">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h4>Koridor Lantai 2</h4>
+                            <p>Area kamar lantai atas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openLightbox(7)">
+                    <img src="images/home12.jpeg" alt="Logo">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">
+                            <h4>Logo Homestay</h4>
+                            <p>Identitas kami</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Lightbox Modal yang diperbaiki -->
-            <div id="lightbox">
+            <!-- Lightbox -->
+            <div class="lightbox" id="lightbox">
                 <div class="lightbox-container">
                     <button class="lightbox-close" onclick="closeLightbox()">
                         <i class="fas fa-times"></i>
                     </button>
 
-                    <!-- Swiper utama untuk gambar besar -->
-                    <div class="swiper lightbox-swiper">
+                    <div class="lightbox-slider swiper">
                         <div class="swiper-wrapper">
-                            <!-- Slides akan ditambahkan oleh JavaScript -->
+                            <!-- Slides will be added by JavaScript -->
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
-                        <div class="swiper-pagination"></div>
                     </div>
 
-                    <!-- Thumbnail gallery di bawah -->
-                    <div class="swiper thumbnail-swiper">
+                    <div class="lightbox-thumbs swiper">
                         <div class="swiper-wrapper">
-                            <!-- Thumbnail akan ditambahkan oleh JavaScript -->
+                            <!-- Thumbs will be added by JavaScript -->
                         </div>
                     </div>
                 </div>
@@ -948,171 +1986,27 @@
         </div>
     </section>
 
-    <!-- Rekomendasi Wisata -->
-    <section id="wisata" class="section-py bg-gradient-to-b from-blue-50 to-gray-50">
-        <div class="section-container mx-auto">
-            <div class="text-center mb-12 md:mb-16">
-                <h2 class="section-title font-bold mb-3 text-gray-900 relative inline-block">
-                    <span class="relative z-10">Rekomendasi Wisata Sekitar</span>
-                </h2>
-                <div class="w-20 h-1.5 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto mb-4 rounded-full"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">Jelajahi keindahan alam Pacitan dengan
-                    destinasi wisata terbaik di sekitar Watukarung</p>
+    <!-- Testimonials Section -->
+    <section class="section testimonials-section" id="testimoni">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Apa Kata Tamu Kami</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Pengalaman nyata dari tamu yang pernah menginap di Bintang Homestay
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                <!-- Goa Gong -->
-                <div
-                    class="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
-                    <div class="h-48 sm:h-56 overflow-hidden relative">
-                        <img src="/images/GONG.jpeg" alt="Goa Gong"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <span
-                            class="absolute top-3 right-3 bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">TERPOPULER</span>
-                    </div>
-                    <div class="p-4 md:p-6">
-                        <div class="flex items-center mb-1">
-                            <i class="fas fa-star text-yellow-400 mr-1 text-sm"></i>
-                            <span class="text-xs md:text-sm font-semibold text-gray-700">4.8 (1.2k review)</span>
-                        </div>
-                        <h3
-                            class="text-base md:text-lg font-bold mb-1 md:mb-2 text-gray-800 group-hover:text-orange-500 transition-colors">
-                            Goa Gong</h3>
-                        <p class="text-gray-600 text-xs md:text-sm mb-2 md:mb-3 line-clamp-2">Goa terindah di Asia
-                            Tenggara dengan formasi stalaktit dan stalagmit yang memukau.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center text-xs text-gray-500">
-                                <i class="fas fa-map-marker-alt mr-1 md:mr-2 text-orange-400"></i>
-                                <span>~15 km</span>
-                            </div>
-                            <a href="https://youtu.be/n3J4ZTFNFVQ?si=deoJAX35GrayuQ52" target="_blank"
-                                class="text-orange-500 hover:text-orange-600 font-medium flex items-center text-xs md:text-sm">
-                                Explore <i class="fas fa-chevron-right ml-1 text-xs"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pantai Kasap -->
-                <div
-                    class="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
-                    <div class="h-48 sm:h-56 overflow-hidden relative">
-                        <img src="/images/kasap.jpg" alt="Pantai Kasap"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    </div>
-                    <div class="p-4 md:p-6">
-                        <div class="flex items-center mb-1">
-                            <i class="fas fa-star text-yellow-400 mr-1 text-sm"></i>
-                            <span class="text-xs md:text-sm font-semibold text-gray-700">4.7 (890 review)</span>
-                        </div>
-                        <h3
-                            class="text-base md:text-lg font-bold mb-1 md:mb-2 text-gray-800 group-hover:text-orange-500 transition-colors">
-                            Pantai Kasap</h3>
-                        <p class="text-gray-600 text-xs md:text-sm mb-2 md:mb-3 line-clamp-2">Pantai dengan pasir putih
-                            dan air jernih yang cocok untuk berenang dan snorkeling.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center text-xs text-gray-500">
-                                <i class="fas fa-map-marker-alt mr-1 md:mr-2 text-orange-400"></i>
-                                <span>~8 km</span>
-                            </div>
-                            <a href="https://youtu.be/T6ykmxbb6tU?si=gzhrGTOQa32bJL1O" target="_blank"
-                                class="text-orange-500 hover:text-orange-600 font-medium flex items-center text-xs md:text-sm">
-                                Explore <i class="fas fa-chevron-right ml-1 text-xs"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pantai Klayar -->
-                <div
-                    class="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
-                    <div class="h-48 sm:h-56 overflow-hidden relative">
-                        <img src="/images/klayar.jpg" alt="Pantai Klayar"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <span
-                            class="absolute top-3 right-3 bg-blue-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">EKSLUSIF</span>
-                    </div>
-                    <div class="p-4 md:p-6">
-                        <div class="flex items-center mb-1">
-                            <i class="fas fa-star text-yellow-400 mr-1 text-sm"></i>
-                            <span class="text-xs md:text-sm font-semibold text-gray-700">4.9 (1.5k review)</span>
-                        </div>
-                        <h3
-                            class="text-base md:text-lg font-bold mb-1 md:mb-2 text-gray-800 group-hover:text-orange-500 transition-colors">
-                            Pantai Klayar</h3>
-                        <p class="text-gray-600 text-xs md:text-sm mb-2 md:mb-3 line-clamp-2">Pantai eksotis dengan
-                            formasi batuan unik dan air terjun kecil di tepi pantai.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center text-xs text-gray-500">
-                                <i class="fas fa-map-marker-alt mr-1 md:mr-2 text-orange-400"></i>
-                                <span>~25 km</span>
-                            </div>
-                            <a href="https://youtu.be/cldWgBqW9Ps?si=7IPKLtEB6CmQH-bd" target="_blank"
-                                class="text-orange-500 hover:text-orange-600 font-medium flex items-center text-xs md:text-sm">
-                                Explore <i class="fas fa-chevron-right ml-1 text-xs"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sungai Maron -->
-                <div
-                    class="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100">
-                    <div class="h-48 sm:h-56 overflow-hidden relative">
-                        <img src="/images/MARON.jpg" alt="Sungai Maron"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    </div>
-                    <div class="p-4 md:p-6">
-                        <div class="flex items-center mb-1">
-                            <i class="fas fa-star text-yellow-400 mr-1 text-sm"></i>
-                            <span class="text-xs md:text-sm font-semibold text-gray-700">4.5 (750 review)</span>
-                        </div>
-                        <h3
-                            class="text-base md:text-lg font-bold mb-1 md:mb-2 text-gray-800 group-hover:text-orange-500 transition-colors">
-                            Sungai Maron</h3>
-                        <p class="text-gray-600 text-xs md:text-sm mb-2 md:mb-3 line-clamp-2">Wisata sungai alami
-                            dengan air jernih dan suasana asri yang cocok untuk kegiatan susur sungai.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center text-xs text-gray-500">
-                                <i class="fas fa-map-marker-alt mr-1 md:mr-2 text-orange-400"></i>
-                                <span>~12 km</span>
-                            </div>
-                            <a href="https://youtu.be/DftKpcWkKyg?si=zLBElQb-MwwZRm6B" target="_blank"
-                                class="text-orange-500 hover:text-orange-600 font-medium flex items-center text-xs md:text-sm">
-                                Explore <i class="fas fa-chevron-right ml-1 text-xs"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimoni -->
-    <section id="testimoni" class="section-py bg-white">
-        <div class="section-container mx-auto">
-            <div class="text-center mb-12 md:mb-16">
-                <h2 class="section-title font-bold mb-3 text-gray-900">Apa Kata Tamu Kami</h2>
-                <div class="w-20 h-1.5 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto mb-4 rounded-full"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">Pengalaman nyata dari tamu yang pernah menginap di Bintang
-                    Homestay</p>
-            </div>
-
-            <div class="swiper testimonial-swiper">
-                <div class="swiper-wrapper pb-8 md:pb-12">
-                    <!-- Testimoni 1 -->
+            <div class="testimonial-slider swiper" data-aos="fade-up" data-aos-delay="200">
+                <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <div class="testimonial-card p-6 rounded-xl shadow-md h-full">
-                            <div class="flex items-center mb-3">
-                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Dewi Lestari"
-                                    class="w-10 h-10 rounded-full mr-3 object-cover">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Dewi Lestari">
+                                </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-800 text-sm md:text-base">Dewi Lestari</h4>
-                                    <div class="flex text-yellow-400 text-xs">
+                                    <h4 class="testimonial-author">Dewi Lestari</h4>
+                                    <div class="testimonial-rating">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -1121,21 +2015,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-gray-600 italic text-xs md:text-sm">"Kamar sangat nyaman dan bersih. Lokasi
-                                strategis dekat pantai. Pelayanan staff sangat ramah dan membantu. Pasti akan kembali
-                                lagi!"</p>
+                            <p class="testimonial-text">
+                                Kamar sangat nyaman dan bersih. Lokasi strategis dekat pantai. Pelayanan staff sangat
+                                ramah dan membantu. Pasti akan kembali lagi!
+                            </p>
                         </div>
                     </div>
 
-                    <!-- Testimoni 2 -->
                     <div class="swiper-slide">
-                        <div class="testimonial-card p-6 rounded-xl shadow-md h-full">
-                            <div class="flex items-center mb-3">
-                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Budi Santoso"
-                                    class="w-10 h-10 rounded-full mr-3 object-cover">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Budi Santoso">
+                                </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-800 text-sm md:text-base">Budi Santoso</h4>
-                                    <div class="flex text-yellow-400 text-xs">
+                                    <h4 class="testimonial-author">Budi Santoso</h4>
+                                    <div class="testimonial-rating">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -1144,21 +2039,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-gray-600 italic text-xs md:text-sm">"Homestay dengan fasilitas lengkap dan
-                                harga terjangkau. WiFi cepat, kamar mandi bersih, dan ada dapur bersama yang sangat
-                                membantu."</p>
+                            <p class="testimonial-text">
+                                Homestay dengan fasilitas lengkap dan harga terjangkau. WiFi cepat, kamar mandi bersih,
+                                dan ada dapur bersama yang sangat membantu.
+                            </p>
                         </div>
                     </div>
 
-                    <!-- Testimoni 3 -->
                     <div class="swiper-slide">
-                        <div class="testimonial-card p-6 rounded-xl shadow-md h-full">
-                            <div class="flex items-center mb-3">
-                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Anita Wijaya"
-                                    class="w-10 h-10 rounded-full mr-3 object-cover">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Anita Wijaya">
+                                </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-800 text-sm md:text-base">Anita Wijaya</h4>
-                                    <div class="flex text-yellow-400 text-xs">
+                                    <h4 class="testimonial-author">Anita Wijaya</h4>
+                                    <div class="testimonial-rating">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -1167,21 +2063,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-gray-600 italic text-xs md:text-sm">"Sangat cocok untuk keluarga. Kamar luas
-                                dan bersih. Area parkir aman. Hanya saja sarapan belum tersedia, tapi banyak warung
-                                makan di sekitar."</p>
+                            <p class="testimonial-text">
+                                Sangat cocok untuk keluarga. Kamar luas dan bersih. Area parkir aman. Hanya saja sarapan
+                                belum tersedia, tapi banyak warung makan di sekitar.
+                            </p>
                         </div>
                     </div>
 
-                    <!-- Testimoni 4 -->
                     <div class="swiper-slide">
-                        <div class="testimonial-card p-6 rounded-xl shadow-md h-full">
-                            <div class="flex items-center mb-3">
-                                <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Rudi Hermawan"
-                                    class="w-10 h-10 rounded-full mr-3 object-cover">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Rudi Hermawan">
+                                </div>
                                 <div>
-                                    <h4 class="font-bold text-gray-800 text-sm md:text-base">Rudi Hermawan</h4>
-                                    <div class="flex text-yellow-400 text-xs">
+                                    <h4 class="testimonial-author">Rudi Hermawan</h4>
+                                    <div class="testimonial-rating">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -1190,9 +2087,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-gray-600 italic text-xs md:text-sm">"Penginapan terbaik di Watukarung!
-                                Pemandangan bagus, staff ramah, dan fasilitas lengkap. Sudah 3 kali menginap di sini dan
-                                selalu puas."</p>
+                            <p class="testimonial-text">
+                                Penginapan terbaik di Watukarung! Pemandangan bagus, staff ramah, dan fasilitas lengkap.
+                                Sudah 3 kali menginap di sini dan selalu puas.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1201,103 +2099,247 @@
         </div>
     </section>
 
-    <!-- Peta & Kontak -->
-    <section id="kontak" class="section-py bg-gray-50">
-        <div class="section-container mx-auto">
-            <div class="text-center mb-12 md:mb-16">
-                <h2 class="section-title font-bold mb-3 text-gray-900">Hubungi Kami</h2>
-                <div class="w-20 h-1.5 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto mb-4 rounded-full"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">Kami siap membantu Anda untuk informasi lebih lanjut atau
-                    pemesanan</p>
+    <!-- Nearby Section -->
+    <section class="section nearby-section" id="wisata">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Rekomendasi Wisata Sekitar</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Jelajahi keindahan alam Pacitan dengan destinasi wisata terbaik di sekitar Watukarung
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
-                <!-- Informasi Kontak -->
-                <div>
-                    <div class="bg-white p-6 rounded-xl shadow-md h-full">
-                        <h3 class="text-lg md:text-xl font-bold mb-4 md:mb-6 text-gray-800">Informasi Kontak</h3>
-
-                        <div class="space-y-4 md:space-y-6">
-                            <div class="flex items-start">
-                                <div class="text-blue-600 mt-0.5 mr-3">
-                                    <i class="fas fa-map-marker-alt text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-800 text-sm md:text-base">Alamat</h4>
-                                    <p class="text-gray-600 text-xs md:text-sm">Jl. Pantai Watukarung No. 123, Desa
-                                        Watukarung, Kec. Pringkuku, Pacitan, Jawa Timur</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start">
-                                <div class="text-blue-600 mt-0.5 mr-3">
-                                    <i class="fas fa-phone-alt text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-800 text-sm md:text-base">Telepon/WhatsApp</h4>
-                                    <p class="text-gray-600 text-xs md:text-sm">+62 896-8189-1033</p>
-                                    <p class="text-gray-600 text-xs md:text-sm">+62 882-9478-1090</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start">
-                                <div class="text-blue-600 mt-0.5 mr-3">
-                                    <i class="fas fa-envelope text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-800 text-sm md:text-base">Email</h4>
-                                    <p class="text-gray-600 text-xs md:text-sm">info@bintanghomestay.com</p>
-                                    <p class="text-gray-600 text-xs md:text-sm">reservation@bintanghomestay.com</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start">
-                                <div class="text-blue-600 mt-0.5 mr-3">
-                                    <i class="fas fa-clock text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-800 text-sm md:text-base">Jam Operasional</h4>
-                                    <p class="text-gray-600 text-xs md:text-sm">Setiap hari 24 jam</p>
-                                    <p class="text-gray-600 text-xs md:text-sm">Check-in: 13:00 WIB | Check-out: 11:00
-                                        WIB</p>
-                                </div>
-                            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="images/GONG.jpeg" alt="Goa Gong">
+                            <div class="destination-badge">Terpopuler</div>
                         </div>
-
-                        <div class="mt-6 md:mt-8">
-                            <h4 class="font-semibold text-gray-800 mb-3 text-sm md:text-base">Media Sosial</h4>
-                            <div class="flex space-x-3 md:space-x-4">
-                                <a href="#" class="text-blue-600 hover:text-blue-800 text-xl">
-                                    <i class="fab fa-facebook"></i>
-                                </a>
-                                <a href="#" class="text-pink-600 hover:text-pink-800 text-xl">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a href="#" class="text-blue-400 hover:text-blue-600 text-xl">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" class="text-red-600 hover:text-red-800 text-xl">
-                                    <i class="fab fa-youtube"></i>
+                        <div class="destination-content">
+                            <div class="destination-rating">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <span class="ms-2 small">4.8 (1.2k review)</span>
+                            </div>
+                            <h3 class="destination-title">Goa Gong</h3>
+                            <p class="destination-description">
+                                Goa terindah di Asia Tenggara dengan formasi stalaktit dan stalagmit yang memukau.
+                            </p>
+                            <div class="destination-meta">
+                                <div class="destination-distance">
+                                    <i class="fas fa-map-marker-alt"></i> ~15 km
+                                </div>
+                                <a href="https://youtu.be/n3J4ZTFNFVQ?si=deoJAX35GrayuQ52" target="_blank"
+                                    class="destination-link">
+                                    Explore <i class="fas fa-chevron-right"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Peta Lokasi -->
-                <div>
-                    <div class="bg-white p-6 rounded-xl shadow-md h-full">
-                        <h3 class="text-lg md:text-xl font-bold mb-4 md:mb-6 text-gray-800">Lokasi Kami</h3>
-                        <div class="rounded-xl overflow-hidden h-64 md:h-80 lg:h-96">
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="images/kasap.jpg" alt="Pantai Kasap">
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-rating">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star-half-alt text-warning"></i>
+                                <span class="ms-2 small">4.7 (890 review)</span>
+                            </div>
+                            <h3 class="destination-title">Pantai Kasap</h3>
+                            <p class="destination-description">
+                                Pantai dengan pasir putih dan air jernih yang cocok untuk berenang dan snorkeling.
+                            </p>
+                            <div class="destination-meta">
+                                <div class="destination-distance">
+                                    <i class="fas fa-map-marker-alt"></i> ~8 km
+                                </div>
+                                <a href="https://youtu.be/T6ykmxbb6tU?si=gzhrGTOQa32bJL1O" target="_blank"
+                                    class="destination-link">
+                                    Explore <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="images/klayar.jpg" alt="Pantai Klayar">
+                            <div class="destination-badge">Eksklusif</div>
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-rating">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <span class="ms-2 small">4.9 (1.5k review)</span>
+                            </div>
+                            <h3 class="destination-title">Pantai Klayar</h3>
+                            <p class="destination-description">
+                                Pantai eksotis dengan formasi batuan unik dan air terjun kecil di tepi pantai.
+                            </p>
+                            <div class="destination-meta">
+                                <div class="destination-distance">
+                                    <i class="fas fa-map-marker-alt"></i> ~25 km
+                                </div>
+                                <a href="https://youtu.be/cldWgBqW9Ps?si=7IPKLtEB6CmQH-bd" target="_blank"
+                                    class="destination-link">
+                                    Explore <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="images/MARON.jpg" alt="Sungai Maron">
+                        </div>
+                        <div class="destination-content">
+                            <div class="destination-rating">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-warning"></i>
+                                <span class="ms-2 small">4.5 (750 review)</span>
+                            </div>
+                            <h3 class="destination-title">Sungai Maron</h3>
+                            <p class="destination-description">
+                                Wisata sungai alami dengan air jernih dan suasana asri yang cocok untuk kegiatan susur
+                                sungai.
+                            </p>
+                            <div class="destination-meta">
+                                <div class="destination-distance">
+                                    <i class="fas fa-map-marker-alt"></i> ~12 km
+                                </div>
+                                <a href="https://youtu.be/DftKpcWkKyg?si=zLBElQb-MwwZRm6B" target="_blank"
+                                    class="destination-link">
+                                    Explore <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="kontak">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Hubungi Kami</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Kami siap membantu Anda untuk informasi lebih lanjut atau pemesanan
+                </p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="contact-card">
+                        <h3 class="mb-4">Informasi Kontak</h3>
+
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="contact-label">Alamat</h4>
+                                    <p class="contact-text">
+                                        Jl. Pantai Watukarung No. 123, Desa Watukarung, Kec. Pringkuku, Pacitan, Jawa
+                                        Timur
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="contact-label">Telepon/WhatsApp</h4>
+                                    <p class="contact-text">
+                                        +62 896-8189-1033<br>
+                                        +62 882-9478-1090
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="contact-label">Email</h4>
+                                    <p class="contact-text">
+                                        info@bintanghomestay.com<br>
+                                        reservation@bintanghomestay.com
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="contact-label">Jam Operasional</h4>
+                                    <p class="contact-text">
+                                        Setiap hari 24 jam<br>
+                                        Check-in: 13:00 WIB | Check-out: 11:00 WIB
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="mb-3">Media Sosial</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="contact-card h-100">
+                        <h3 class="mb-4">Lokasi Kami</h3>
+                        <div class="map-container">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3213.43136285088!2d110.97157957500978!3d-8.236455891796606!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7bddbf867b05f7%3A0x9df2ed136347df0b!2sBintang%20Homestay%20Watukarung!5e1!3m2!1sid!2sid!4v1747496251450!5m2!1sid!2sid"
-                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
-                        <div class="mt-3 md:mt-4 text-center">
+                        <div class="text-center mt-3">
                             <a href="https://maps.google.com/?q=Bintang+Homestay+Watukarung" target="_blank"
-                                class="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center text-sm md:text-base">
-                                <i class="fas fa-directions mr-1 md:mr-2"></i> Dapatkan Petunjuk Arah
+                                class="btn-book">
+                                <i class="fas fa-directions me-2"></i> Dapatkan Petunjuk Arah
                             </a>
                         </div>
                     </div>
@@ -1306,461 +2348,478 @@
         </div>
     </section>
 
-    <!-- Elegant Agoda Booking Section -->
-    <section id="pemesanan" class="section-py bg-white">
-        <div class="section-container mx-auto max-w-4xl">
-            <div class="text-center mb-8 md:mb-12">
-                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800">Pesan Kamar Anda</h2>
-                <div class="w-20 h-1.5 bg-gradient-to-r from-orange-400 to-yellow-400 mx-auto mb-4 rounded-full"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">Kami bekerja sama dengan platform terpercaya untuk
-                    memberikan pengalaman pemesanan yang nyaman</p>
+    <!-- Booking Section -->
+    <section class="section booking-section" id="pemesanan">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title" data-aos="fade-up">Pesan Kamar Anda</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Kami bekerja sama dengan platform terpercaya untuk memberikan pengalaman pemesanan yang nyaman
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Tiket.com Booking -->
-                <div class="bg-gray-50 rounded-xl p-6 shadow-sm border border-gray-100">
-                    <div class="flex items-center justify-center mb-3">
-                        <div class="bg-white p-1.5 rounded-md shadow-xs mr-2 md:mr-3">
-                            <img src="https://www.tiket.com/favicon.ico" alt="Tiket.com" class="h-5 md:h-6"
-                                onerror="this.style.display='none'">
-                        </div>
-                        <span class="text-gray-700 font-medium text-sm md:text-base">Pesan melalui</span>
-                    </div>
-                    <h3 class="text-base md:text-lg font-medium text-gray-800 mb-1 md:mb-2 text-center">Tiket.com</h3>
-                    <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4 text-center max-w-xs mx-auto">Platform
-                        travel terbesar di Indonesia dengan harga kompetitif</p>
-                    <div class="text-center">
-                        <a href="https://www.tiket.com/homes/indonesia/bintang-homestay-watukarung-605001684298220966"
-                            target="_blank"
-                            class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 md:py-3 px-6 md:px-8 rounded-md transition-colors duration-200 text-sm md:text-base">
-                            Pesan di Tiket.com
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Agoda Booking -->
-                <div class="bg-gray-50 rounded-xl p-6 shadow-sm border border-gray-100">
-                    <div class="flex items-center justify-center mb-3">
-                        <div class="bg-white p-1.5 rounded-md shadow-xs mr-2 md:mr-3">
-                            <img src="https://www.agoda.com/favicon.ico" alt="Agoda" class="h-5 md:h-6"
-                                onerror="this.style.display='none'">
-                        </div>
-                        <span class="text-gray-700 font-medium text-sm md:text-base">Pesan melalui</span>
-                    </div>
-                    <h3 class="text-base md:text-lg font-medium text-gray-800 mb-1 md:mb-2 text-center">Agoda</h3>
-                    <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4 text-center max-w-xs mx-auto">Platform
-                        internasional dengan jaminan harga terbaik</p>
-                    <div class="text-center">
-                        <a href="https://www.agoda.com/id-id/bintang-homestay-watukarung-h37351915/hotel/pacitan-id.html?ds=heSmelgg4%2BFrJaOs"
-                            target="_blank"
-                            class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 md:py-3 px-6 md:px-8 rounded-md transition-colors duration-200 text-sm md:text-base">
-                            Pesan di Agoda
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- WhatsApp Support -->
-            <div class="bg-gray-50 rounded-xl p-6 md:p-8 shadow-sm border border-gray-100 mt-6">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
-                    <div class="text-center md:text-left">
-                        <div class="flex items-center justify-center md:justify-start mb-3">
-                            <div class="bg-white p-1.5 rounded-md shadow-xs mr-2 md:mr-3 text-green-500">
-                                <i class="fab fa-whatsapp text-xl"></i>
+            <div class="row">
+                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="booking-card">
+                        <div class="booking-platform">
+                            <div class="booking-logo">
+                                <img src="https://www.tiket.com/favicon.ico" alt="Tiket.com">
                             </div>
-                            <span class="text-gray-700 font-medium text-sm md:text-base">Butuh Bantuan?</span>
+                            <span>Pesan melalui</span>
                         </div>
-                        <h3 class="text-base md:text-lg font-medium text-gray-800 mb-1 md:mb-2">Tim Kami Siap Membantu
-                        </h3>
-                        <p class="text-gray-600 text-xs md:text-sm mb-3 md:mb-4 max-w-xs">Respon cepat melalui WhatsApp
-                            24 jam</p>
+                        <h3 class="booking-title">Tiket.com</h3>
+                        <p class="booking-description">
+                            Platform travel terbesar di Indonesia dengan harga kompetitif dan promo menarik
+                        </p>
+                        <a href="https://www.tiket.com/homes/indonesia/bintang-homestay-watukarung-605001684298220966"
+                            target="_blank" class="btn-book w-100">
+                            <i class="fas fa-external-link-alt me-2"></i> Pesan di Tiket.com
+                        </a>
                     </div>
-                    <a href="https://wa.me/6289681891033" target="_blank"
-                        class="inline-block bg-green-500 hover:bg-green-600 text-white font-medium py-2 md:py-3 px-6 md:px-8 rounded-md transition-colors duration-200 text-sm md:text-base">
-                        Hubungi Kami
+                </div>
+
+                <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="booking-card">
+                        <div class="booking-platform">
+                            <div class="booking-logo">
+                                <img src="https://www.agoda.com/favicon.ico" alt="Agoda">
+                            </div>
+                            <span>Pesan melalui</span>
+                        </div>
+                        <h3 class="booking-title">Agoda</h3>
+                        <p class="booking-description">
+                            Platform internasional dengan jaminan harga terbaik dan ulasan tamu yang transparan
+                        </p>
+                        <a href="https://www.agoda.com/id-id/bintang-homestay-watukarung-h37351915/hotel/pacitan-id.html?ds=heSmelgg4%2BFrJaOs"
+                            target="_blank" class="btn-book w-100">
+                            <i class="fas fa-external-link-alt me-2"></i> Pesan di Agoda
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booking-support" data-aos="fade-up" data-aos-delay="400">
+                <div class="row align-items-center">
+                    <div class="col-md-8 mb-3 mb-md-0">
+                        <div class="d-flex align-items-center">
+                            <div class="support-icon me-3">
+                                <i class="fab fa-whatsapp fa-2x text-success"></i>
+                            </div>
+                            <div>
+                                <h4 class="mb-1">Butuh Bantuan?</h4>
+                                <p class="mb-0">Tim kami siap membantu Anda 24 jam melalui WhatsApp</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <a href="https://wa.me/6289681891033" target="_blank" class="btn-book">
+                            <i class="fab fa-whatsapp me-2"></i> Hubungi Kami
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="cta-pattern"></div>
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2 class="cta-title">Siap Memesan Penginapan Anda?</h2>
+                <p class="cta-text">
+                    Nikmati pengalaman menginap terbaik di Watukarung dengan fasilitas lengkap dan pelayanan ramah.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#pemesanan" class="btn-cta-primary">
+                        <i class="fas fa-calendar-check me-2"></i> Pesan Sekarang
+                    </a>
+                    <a href="#kontak" class="btn-cta-secondary">
+                        <i class="fas fa-phone me-2"></i> Hubungi Kami
                     </a>
                 </div>
-            </div>
-
-            <div class="text-center mt-6 md:mt-8">
-                <p class="text-gray-500 text-xs md:text-sm">Proses pemesanan aman dan terjamin</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-12 pb-6 md:pt-16 md:pb-8">
-        <div class="section-container mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mb-10 md:mb-12">
-                <!-- Tentang Kami -->
-                <div>
-                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 flex items-center">
-                        <img src="{{ asset('images/bintang.png') }}" alt="Logo"
-                            class="w-6 h-6 md:w-7 md:h-7 mr-2">
-                        Bintang Homestay
-                    </h3>
-                    <p class="text-gray-400 mb-3 md:mb-4 text-sm md:text-base">Penginapan nyaman dengan fasilitas
-                        lengkap di Pantai Watukarung, Pacitan. Memberikan pengalaman menginap terbaik dengan harga
-                        terjangkau.</p>
-                    <div class="flex space-x-3 md:space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition text-lg md:text-xl">
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="footer-logo">
+                        <img src="images/bintang.png" alt="Bintang Homestay">
+                        <span>Bintang Homestay</span>
+                    </div>
+                    <p class="footer-about">
+                        Penginapan nyaman dengan fasilitas lengkap di Pantai Watukarung, Pacitan. Memberikan pengalaman
+                        menginap terbaik dengan harga terjangkau.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition text-lg md:text-xl">
+                        <a href="#" class="footer-social-link">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition text-lg md:text-xl">
+                        <a href="#" class="footer-social-link">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition text-lg md:text-xl">
+                        <a href="#" class="footer-social-link">
                             <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Link Cepat -->
-                <div>
-                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4">Link Cepat</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#home"
-                                class="text-gray-400 hover:text-white transition text-sm md:text-base">Beranda</a></li>
-                        <li><a href="#fasilitas"
-                                class="text-gray-400 hover:text-white transition text-sm md:text-base">Fasilitas</a>
-                        </li>
-                        <li><a href="#kamar"
-                                class="text-gray-400 hover:text-white transition text-sm md:text-base">Kamar</a></li>
-                        <li><a href="#galeri"
-                                class="text-gray-400 hover:text-white transition text-sm md:text-base">Galeri</a></li>
-                        <li><a href="#wisata"
-                                class="text-gray-400 hover:text-white transition text-sm md:text-base">Wisata</a></li>
-                        <li><a href="#testimoni"
-                                class="text-gray-400 hover:text-white transition text-sm md:text-base">Testimoni</a>
-                        </li>
-                        <li><a href="#kontak"
-                                class="text-gray-400 hover:text-white transition text-sm md:text-base">Kontak</a></li>
+                <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
+                    <h3 class="footer-title">Link Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home" class="footer-link">Beranda</a></li>
+                        <li><a href="#fasilitas" class="footer-link">Fasilitas</a></li>
+                        <li><a href="#kamar" class="footer-link">Kamar</a></li>
+                        <li><a href="#galeri" class="footer-link">Galeri</a></li>
+                        <li><a href="#wisata" class="footer-link">Wisata</a></li>
+                        <li><a href="#testimoni" class="footer-link">Testimoni</a></li>
+                        <li><a href="#kontak" class="footer-link">Kontak</a></li>
                     </ul>
                 </div>
 
-                <!-- Kontak -->
-                <div>
-                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4">Kontak Kami</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li class="flex items-start text-sm md:text-base">
-                            <i class="fas fa-map-marker-alt mt-1 mr-2 md:mr-3"></i>
-                            <span>Jl. Pantai Watukarung No. 123, Pacitan, Jawa Timur</span>
-                        </li>
-                        <li class="flex items-center text-sm md:text-base">
-                            <i class="fas fa-phone-alt mr-2 md:mr-3"></i>
-                            <span>+62 896-8189-1033</span>
-                        </li>
-                        <li class="flex items-center text-sm md:text-base">
-                            <i class="fas fa-envelope mr-2 md:mr-3"></i>
-                            <span>info@bintanghomestay.com</span>
-                        </li>
-                    </ul>
+                <div class="col-md-4 col-lg-3 mb-4 mb-md-0">
+                    <h3 class="footer-title">Kontak Kami</h3>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Jl. Pantai Watukarung No. 123, Pacitan, Jawa Timur</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+62 896-8189-1033</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>bintang@homestay.com</span>
+                    </div>
                 </div>
 
-                <!-- Newsletter -->
-                <div>
-                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4">Newsletter</h3>
-                    <p class="text-gray-400 mb-3 md:mb-4 text-sm md:text-base">Dapatkan promo dan penawaran khusus
-                        dengan berlangganan newsletter kami.</p>
-                    <form class="flex">
-                        <input type="email" placeholder="Email Anda"
-                            class="px-3 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full text-sm md:text-base">
-                        <button type="submit"
-                            class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded-r-lg transition text-sm md:text-base">
-                            <i class="fas fa-paper-plane"></i>
+                <div class="col-md-4 col-lg-3">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p class="footer-about">
+                        Dapatkan promo dan penawaran khusus dengan berlangganan newsletter kami.
+                    </p>
+                    <form class="footer-newsletter">
+                        <input type="email" placeholder="Email Anda" class="footer-input">
+                        <button type="submit" class="footer-button">
+                            <i class="fas fa-paper-plane me-2"></i> Berlangganan
                         </button>
                     </form>
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 mb-4 md:mb-0 text-sm md:text-base">© 2023 Bintang Homestay. All rights
-                    reserved.</p>
-                <div class="flex space-x-4 md:space-x-6 text-sm md:text-base">
-                    <a href="/sitemap" class="text-gray-400 hover:text-white transition">Sitemap</a>
-                    <a href="/privacy-policy" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
-                    <a href="/terms-of-service" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    &copy; 2023 Bintang Homestay. All rights reserved.
+                </p>
+                <div class="footer-legal">
+                    <a href="/privacy-policy" class="footer-legal-link">Kebijakan Privasi</a>
+                    <a href="/terms-of-service" class="footer-legal-link">Syarat & Ketentuan</a>
+                    <a href="/sitemap" class="footer-legal-link">Sitemap</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/6289681891033" target="_blank"
-        class="whatsapp-btn fixed bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition z-50">
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/6289681891033" target="_blank" class="whatsapp-button">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Main JS -->
     <script>
-        // Data gambar galeri
-        const galleryData = [{
-                src: "/images/home.jpeg",
-                title: "Bintang Homestay"
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Prevent closing when clicking inside mobile menu
+        mobileMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const isClickInsideMobileMenu = mobileMenu.contains(e.target);
+            const isClickOnMenuButton = mobileMenuBtn.contains(e.target);
+
+            if (mobileMenu.classList.contains('active') && !isClickInsideMobileMenu && !isClickOnMenuButton) {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        // Initialize room swipers
+        const roomSwipers = document.querySelectorAll('.room-swiper');
+        roomSwipers.forEach(swiper => {
+            new Swiper(swiper, {
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+            });
+        });
+
+        // Initialize testimonial slider
+        const testimonialSlider = new Swiper('.testimonial-slider', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 3,
+                }
+            }
+        });
+
+        // Gallery lightbox
+        const galleryItems = [{
+                src: 'images/home.jpeg',
+                title: 'Fasade Homestay',
+                description: 'Tampak depan Bintang Homestay'
             },
             {
-                src: "/images/home2.jpeg",
-                title: "Lobby"
+                src: 'images/home2.jpeg',
+                title: 'Area Lobby',
+                description: 'Ruang tamu yang nyaman'
             },
             {
-                src: "/images/home1.jpeg",
-                title: "Area Parkir"
+                src: 'images/home1.jpeg',
+                title: 'Area Parkir',
+                description: 'Parkir luas dan aman'
             },
             {
-                src: "/images/home3.jpeg",
-                title: "Shower"
+                src: 'images/home3.jpeg',
+                title: 'Kamar Mandi',
+                description: 'Bersih dengan air panas'
             },
             {
-                src: "/images/home4.jpeg",
-                title: "Pemandangan"
+                src: 'images/home4.jpeg',
+                title: 'Pemandangan',
+                description: 'View dari kamar'
             },
             {
-                src: "/images/home11.jpeg",
-                title: "Lantai 1"
+                src: 'images/home11.jpeg',
+                title: 'Koridor Lantai 1',
+                description: 'Akses ke kamar'
             },
             {
-                src: "/images/home6.jpeg",
-                title: "Lantai 2"
+                src: 'images/home6.jpeg',
+                title: 'Koridor Lantai 2',
+                description: 'Area kamar lantai atas'
             },
             {
-                src: "/images/home12.jpeg",
-                title: "Logo"
+                src: 'images/home12.jpeg',
+                title: 'Logo Homestay',
+                description: 'Identitas kami'
             }
         ];
 
-        let lightboxSwiper = null;
-        let thumbnailSwiper = null;
-        const galleryItems = document.querySelectorAll('.gallery-item');
+        let lightboxSlider, lightboxThumbs;
 
         function openLightbox(index) {
             const lightbox = document.getElementById('lightbox');
-            const mainSwiperWrapper = document.querySelector('.lightbox-swiper .swiper-wrapper');
-            const thumbnailWrapper = document.querySelector('.thumbnail-swiper .swiper-wrapper');
+            const lightboxSliderWrapper = document.querySelector('.lightbox-slider .swiper-wrapper');
+            const lightboxThumbsWrapper = document.querySelector('.lightbox-thumbs .swiper-wrapper');
 
             // Clear existing slides
-            mainSwiperWrapper.innerHTML = '';
-            thumbnailWrapper.innerHTML = '';
+            lightboxSliderWrapper.innerHTML = '';
+            lightboxThumbsWrapper.innerHTML = '';
 
-            // Add all images to lightbox
-            galleryData.forEach((img, i) => {
-                // Slide utama
-                const mainSlide = document.createElement('div');
-                mainSlide.className = 'swiper-slide';
-                mainSlide.setAttribute('data-title', img.title);
+            // Add slides
+            galleryItems.forEach((item, i) => {
+                // Main slide
+                const slide = document.createElement('div');
+                slide.className = 'swiper-slide';
 
-                const mainImage = document.createElement('img');
-                mainImage.src = img.src;
-                mainImage.alt = img.title;
-                mainImage.classList.add('w-full', 'h-full', 'object-contain');
-                mainSlide.appendChild(mainImage);
-                mainSwiperWrapper.appendChild(mainSlide);
+                const img = document.createElement('img');
+                img.src = item.src;
+                img.alt = item.title;
+
+                slide.appendChild(img);
+                lightboxSliderWrapper.appendChild(slide);
 
                 // Thumbnail
-                const thumbSlide = document.createElement('div');
-                thumbSlide.className = 'swiper-slide cursor-pointer';
-                thumbSlide.style.opacity = i === index ? '1' : '0.6';
-                thumbSlide.style.transition = 'opacity 0.3s';
+                const thumb = document.createElement('div');
+                thumb.className = 'swiper-slide';
 
-                const thumbImage = document.createElement('img');
-                thumbImage.src = img.src;
-                thumbImage.alt = img.title;
-                thumbImage.classList.add('w-full', 'h-full', 'object-cover');
-                thumbSlide.appendChild(thumbImage);
-                thumbnailWrapper.appendChild(thumbSlide);
+                const thumbImg = document.createElement('img');
+                thumbImg.src = item.src;
+                thumbImg.alt = item.title;
 
-                // Click handler untuk thumbnail
-                thumbSlide.addEventListener('click', () => {
-                    lightboxSwiper.slideTo(i);
-                    updateActiveThumbnail(i);
-                });
+                thumb.appendChild(thumbImg);
+                lightboxThumbsWrapper.appendChild(thumb);
             });
 
-            // Initialize main swiper jika belum ada
-            if (!lightboxSwiper) {
-                lightboxSwiper = new Swiper('.lightbox-swiper', {
-                    loop: false,
+            // Initialize sliders if not already initialized
+            if (!lightboxSlider) {
+                lightboxSlider = new Swiper('.lightbox-slider', {
+                    loop: true,
                     navigation: {
                         nextEl: '.swiper-button-next',
                         prevEl: '.swiper-button-prev',
-                    },
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                    },
-                    keyboard: {
-                        enabled: true,
-                    },
-                    on: {
-                        slideChange: function() {
-                            updateActiveThumbnail(this.realIndex);
-                        }
                     }
                 });
             }
 
-            // Initialize thumbnail swiper
-            if (!thumbnailSwiper) {
-                thumbnailSwiper = new Swiper('.thumbnail-swiper', {
+            if (!lightboxThumbs) {
+                lightboxThumbs = new Swiper('.lightbox-thumbs', {
                     slidesPerView: 'auto',
-                    spaceBetween: 8,
+                    spaceBetween: 10,
                     centeredSlides: true,
-                    slideToClickedSlide: true
+                    slideToClickedSlide: true,
                 });
+
+                // Connect thumbs to main slider
+                lightboxSlider.controller.control = lightboxThumbs;
+                lightboxThumbs.controller.control = lightboxSlider;
             }
 
-            // Go to the clicked slide
-            lightboxSwiper.slideTo(index);
-            thumbnailSwiper.slideTo(index);
+            // Go to selected slide
+            lightboxSlider.slideTo(index);
 
             // Show lightbox
             lightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-
-            // Add animation class
-            lightbox.classList.add('animate-fade-in');
-        }
-
-        function updateActiveThumbnail(index) {
-            const thumbnails = document.querySelectorAll('.thumbnail-swiper .swiper-slide');
-            thumbnails.forEach((thumb, i) => {
-                thumb.style.opacity = i === index ? '1' : '0.6';
-            });
-
-            // Update thumbnail swiper untuk memastikan thumbnail aktif terlihat
-            thumbnailSwiper.slideTo(index);
         }
 
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('animate-fade-in');
             lightbox.style.display = 'none';
             document.body.style.overflow = '';
-
-            if (lightboxSwiper) {
-                lightboxSwiper.destroy(true, true);
-                lightboxSwiper = null;
-            }
-
-            if (thumbnailSwiper) {
-                thumbnailSwiper.destroy(true, true);
-                thumbnailSwiper = null;
-            }
         }
 
-        // Add click event listeners to all gallery items
-        galleryItems.forEach((item, index) => {
-            item.addEventListener('click', function() {
-                openLightbox(index);
-            });
-        });
-
-        // Close lightbox when clicking outside the image
-        document.getElementById('lightbox').addEventListener('click', function(e) {
-            if (e.target === this) {
+        // Close lightbox when clicking outside
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
                 closeLightbox();
             }
         });
 
-        // Close with ESC key
-        document.addEventListener('keydown', function(e) {
+        // Close lightbox with ESC key
+        document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && document.getElementById('lightbox').style.display === 'flex') {
                 closeLightbox();
             }
         });
 
-        // Initialize other Swipers (room swipers, testimonial swiper, etc.)
-        document.addEventListener('DOMContentLoaded', function() {
-            // Room Swipers
-            const roomSwipers = document.querySelectorAll('.room-swiper');
-            roomSwipers.forEach(swiper => {
-                new Swiper(swiper, {
-                    loop: true,
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true,
-                    },
-                    autoplay: {
-                        delay: 3000,
-                    },
-                });
-            });
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
 
-            // Testimonial Swiper
-            const testimonialSwiper = new Swiper('.testimonial-swiper', {
-                slidesPerView: 1,
-                spaceBetween: 16,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                breakpoints: {
-                    640: {
-                        slidesPerView: 1,
-                        spaceBetween: 20,
-                    },
-                    768: {
-                        slidesPerView: 2,
-                        spaceBetween: 24,
-                    },
-                    1024: {
-                        slidesPerView: 3,
-                        spaceBetween: 24,
-                    }
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 }
             });
-
-            // Navbar scroll effect
-            window.addEventListener('scroll', function() {
-                const navbar = document.querySelector('.navbar-ocean');
-                if (window.scrollY > 20) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Prevent video from playing on mobile when not in view
-            const heroVideo = document.querySelector('.video-bg');
-            if (window.innerWidth < 768) {
-                heroVideo.pause();
-            }
-
-            // Replay video when it comes into view
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        heroVideo.play();
-                    } else {
-                        heroVideo.pause();
-                    }
-                });
-            }, {
-                threshold: 0.5
-            });
-
-            observer.observe(heroVideo);
         });
+
+        // Pause video on mobile when not in view
+        const heroVideo = document.querySelector('.hero-video-container video');
+        if (window.innerWidth < 768) {
+            heroVideo.pause();
+        }
+
+        // Play/pause video based on visibility
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    heroVideo.play();
+                } else {
+                    heroVideo.pause();
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        observer.observe(heroVideo);
     </script>
 </body>
 

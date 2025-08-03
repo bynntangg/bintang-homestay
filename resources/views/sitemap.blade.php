@@ -1,465 +1,1201 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Sitemap | Bintang Homestay Watukarung</title>
-    @vite('resources/css/app.css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <meta name="description"
+        content="Peta situs Bintang Homestay Watukarung, Pacitan. Temukan semua halaman dan informasi yang tersedia di website kami.">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate on Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
+        :root {
+            --primary: #3B82F6;
+            --primary-dark: #1D4ED8;
+            --primary-light: #93C5FD;
+            --secondary: #F97316;
+            --secondary-dark: #EA580C;
+            --secondary-light: #FDBA74;
+            --dark: #030712;
+            --dark-light: #1F2937;
+            --gray: #6B7280;
+            --gray-light: #E5E7EB;
+            --light: #F9FAFB;
+            --white: #FFFFFF;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
-            color: #111827;
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--white);
+            overflow-x: hidden;
             line-height: 1.6;
+            padding-top: 80px;
+            /* Untuk mengkompensasi navbar fixed */
         }
-        .container {
-            max-width: 1200px;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-balance {
+            text-wrap: balance;
+        }
+
+        /* Utility Classes */
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        .bg-gradient-secondary {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+        }
+
+        .text-gradient-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .text-gradient-secondary {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Navbar Styles */
+        .navbar-ocean {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(3, 7, 18, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            padding: 0.5rem 0;
+        }
+
+        .navbar-ocean.scrolled {
+            background: rgba(3, 7, 18, 0.95);
+            box-shadow: 0 4px 30px rgba(2, 6, 23, 0.25);
+            padding: 0.25rem 0;
+        }
+
+        .navbar-container {
+            max-width: 1320px;
+            width: 100%;
+            padding: 0 1.5rem;
             margin: 0 auto;
-            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
         }
-        .header {
-            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
-            color: white;
-            padding: 100px 20px 60px;
-            text-align: center;
-            margin-bottom: 30px;
+
+        .logo-brand {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-weight: 700;
+            color: var(--white);
+            z-index: 1001;
+            margin-right: auto;
+            padding: 0.5rem 0;
+        }
+
+        .logo-brand img {
+            width: 60px;
+            height: 60px;
+            margin-right: 0.5rem;
+        }
+
+        .logo-brand .logo-text {
+            display: none;
+        }
+
+        .nav-menu {
             display: flex;
             align-items: center;
-            min-height: 200px;
         }
-        .header-content {
-            max-width: 100%;
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin-bottom: 0;
+            padding-left: 0;
+        }
+
+        .nav-item {
+            margin: 0 0.5rem;
+        }
+
+        .nav-link {
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 500;
+            color: rgba(219, 234, 254, 0.9);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: rgba(29, 78, 216, 0.4);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.6) 0%, rgba(29, 78, 216, 0.7) 100%);
+            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.15);
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+            color: var(--white);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(5, 11, 26, 0.25);
+            transition: all 0.3s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-book:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(234, 88, 12, 0.3);
+            color: var(--white);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 320px;
+            height: 100vh;
+            background: var(--dark);
+            z-index: 1000;
+            transition: right 0.3s ease;
+            padding: 5rem 2rem 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
         }
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
-        .card {
-            background: white;
-            border-radius: 12px;
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            right: 1.5rem;
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-link {
+            color: var(--white);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0.25rem 0;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            margin-bottom: 40px;
-            position: relative;
         }
-        .footer {
-            background-color: #111827;
-            color: white;
-            padding: 40px 0;
+
+        .mobile-nav-link.active {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.6) 0%, rgba(29, 78, 216, 0.7) 100%);
+            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.15);
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link:focus {
+            background: rgba(29, 78, 216, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .mobile-nav-link i {
+            margin-right: 1rem;
+            width: 24px;
             text-align: center;
         }
-        h2 {
-            color: #1e40af;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            font-weight: 600;
+
+        /* Sitemap Header Styles */
+        .sitemap-header {
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--dark);
+            padding: 6rem 0;
             position: relative;
-            padding-left: 20px;
+            margin-bottom: 3rem;
+            border-left: 5px solid var(--secondary);
         }
-        h2:before {
-            content: "";
+
+        .sitemap-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .sitemap-header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .sitemap-title {
+            color: var(--primary-dark);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .last-updated {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* Sitemap Content Styles */
+        .sitemap-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .sitemap-content {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--gray-light);
+        }
+
+        .sitemap-content h2 {
+            color: var(--primary-dark);
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .sitemap-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .sitemap-content h2::before {
+            content: '';
             position: absolute;
             left: 0;
             top: 0.35em;
             height: 1em;
             width: 8px;
-            background: linear-gradient(to bottom, #3b82f6, #1e40af);
+            background: linear-gradient(to bottom, var(--primary), var(--primary-dark));
             border-radius: 4px;
         }
-        h3 {
-            color: #1e3a8a;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 8px;
+
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
-        p {
-            margin-bottom: 1.2rem;
-            color: #374151;
-            font-size: 1.05rem;
-            line-height: 1.7;
+
+        .sitemap-section h3 {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gray-light);
         }
-        ul {
-            padding-left: 24px;
-            margin-bottom: 1.5rem;
+
+        .sitemap-links {
+            list-style: none;
+            padding: 0;
         }
-        li {
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 10px;
-            color: #4b5563;
-        }
-        li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #3b82f6;
-            font-weight: bold;
-        }
-        .feature-icon {
-            font-size: 2.5rem;
-            color: #1e40af;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #3b82f6, #1e40af);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
+
         .sitemap-link {
-            display: block;
-            padding: 10px 15px;
-            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
             border-radius: 8px;
             transition: all 0.3s ease;
-            color: #1e40af;
+            color: var(--dark-light);
             font-weight: 500;
         }
+
         .sitemap-link:hover {
-            background-color: #eff6ff;
+            background-color: var(--light);
+            color: var(--primary-dark);
             transform: translateX(5px);
-            color: #1e3a8a;
         }
+
         .sitemap-link i {
-            margin-right: 10px;
+            margin-right: 1rem;
+            color: var(--primary);
             width: 20px;
             text-align: center;
         }
-        .last-updated {
-            font-size: 0.95rem;
-            opacity: 0.9;
-            color: white;
-            margin-top: 10px;
+
+        /* Features Section */
+        .features-section {
+            margin-top: 3rem;
         }
 
-        /* Navbar Styles */
-        .navbar-ocean {
-            background: rgba(3, 7, 18, 0.9);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.15);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
         }
-        .nav-container {
-            max-width: 1280px;
-            padding: 1rem 1.5rem;
-            margin: 0 auto;
+
+        .feature-item {
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
         }
-        .logo-wave {
-            background: linear-gradient(135deg, rgba(147, 197, 253, 0.9) 0%, rgba(96, 165, 250, 0.95) 100%);
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 2px 4px rgba(7, 29, 73, 0.25);
-        }
-        .nav-pill {
-            padding: 0.5rem 1rem;
-            margin: 0 0.25rem;
-            border-radius: 9999px;
-            font-weight: 500;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background: rgba(30, 58, 138, 0.3);
-            color: rgba(219, 234, 254, 0.9);
-            border: 1px solid rgba(59, 130, 246, 0.15);
-            font-size: 0.9rem;
-        }
-        .nav-pill:hover {
-            transform: translateY(-2px);
-            background: rgba(29, 78, 216, 0.4);
-            color: white;
-            box-shadow: 0 4px 12px rgba(29, 78, 216, 0.15);
-            border-color: rgba(59, 130, 246, 0.3);
-        }
-        .nav-button-ocean {
-            background: linear-gradient(135deg, rgba(249, 168, 38, 0.95) 0%, rgba(234, 88, 12, 0.9) 100%);
-            color: white;
-            padding: 0.5rem 1.25rem;
-            border-radius: 9999px;
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(5, 11, 26, 0.25);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            font-size: 0.9rem;
-        }
-        .nav-button-ocean:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(234, 88, 12, 0.25);
-            background: linear-gradient(135deg, rgba(251, 191, 36, 0.95) 0%, rgba(234, 88, 12, 0.95) 100%);
         }
 
-        /* Mobile Menu */
-        .mobile-menu-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            display: none;
+        .feature-title {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
         }
-        .mobile-menu-container.show {
-            display: block;
+
+        /* Footer Styles */
+        .footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
         }
-        .mobile-menu-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-        .mobile-menu {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 85%;
-            max-width: 320px;
-            height: 100%;
-            background: rgba(3, 7, 18, 0.95);
-            border-left: 1px solid rgba(30, 64, 175, 0.3);
-            box-shadow: -10px 0 30px rgba(2, 6, 23, 0.5);
-            overflow-y: auto;
-            transform: translateX(100%);
-            transition: transform 0.3s ease-out;
-            padding: 1.5rem;
-        }
-        .mobile-menu.open {
-            transform: translateX(0);
-        }
-        .mobile-nav-item {
-            padding: 0.75rem 1.25rem;
-            margin: 0.25rem 0;
-            border-radius: 9999px;
-            background: rgba(30, 58, 138, 0.3);
-            color: rgba(219, 234, 254, 0.9);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(59, 130, 246, 0.1);
-            font-size: 0.95rem;
+
+        .footer-logo {
             display: flex;
             align-items: center;
-        }
-        .mobile-nav-item:hover, .mobile-nav-item.active {
-            background: rgba(29, 78, 216, 0.4);
-            color: white;
-        }
-        .mobile-menu-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            color: white;
+            font-weight: 700;
             font-size: 1.5rem;
-            background: transparent;
-            border: none;
-            cursor: pointer;
+            margin-bottom: 1.5rem;
         }
 
-        @media (max-width: 768px) {
-            .header {
-                padding: 80px 15px 40px;
-                min-height: 180px;
+        .footer-logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 0.75rem;
+        }
+
+        .footer-about {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, var(--secondary), var(--secondary-light));
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.75rem;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-contact-item i {
+            margin-right: 0.75rem;
+            color: var(--primary-light);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .footer-social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-newsletter {
+            margin-top: 1.5rem;
+        }
+
+        .footer-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 50px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-button {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+            color: var(--white);
+            border: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .footer-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 3rem 0 2rem;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-legal-link {
+            color: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .footer-legal-link:hover {
+            color: var(--white);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--success);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            z-index: 999;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 5rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.3);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
             }
-            .header h1 {
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(16, 185, 129, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 991.98px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .btn-book.me-3 {
+                margin-right: 1rem !important;
+            }
+
+            .logo-brand {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .logo-brand img {
+                margin-right: 0.5rem;
+                margin-bottom: 0;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .sitemap-header {
+                padding: 4rem 0;
+            }
+
+            .sitemap-title {
                 font-size: 2rem;
             }
-            .card {
-                padding: 25px;
+
+            .sitemap-content {
+                padding: 1.5rem;
             }
-            h2 {
-                font-size: 1.3rem;
-                margin-top: 30px;
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+
+            .footer-legal {
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-top: 1rem;
             }
         }
 
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.8rem;
-                line-height: 1.3;
+        @media (max-width: 575.98px) {
+            .sitemap-title {
+                font-size: 1.75rem;
+            }
+
+            .whatsapp-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                bottom: 4.5rem;
+                right: 1.5rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Navbar -->
-    <header class="fixed top-0 left-0 right-0 z-50" x-data="{ isOpen: false }">
-        <nav class="navbar-ocean">
-            <div class="nav-container flex justify-between items-center py-2 lg:py-3">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <a href="/" class="text-xl md:text-2xl font-bold logo-wave flex items-center">
-                        <img src="{{ asset('images/bintang.png') }}" alt="Logo" class="w-8 h-8 md:w-10 md:h-10 mr-2">
-                        <span class="hidden sm:inline">Bintang Homestay</span>
-                    </a>
-                </div>
+    <header class="navbar-ocean" id="navbar">
+        <div class="navbar-container">
+            <a href="/" class="logo-brand">
+                <img src="images/bintang.png" alt="Bintang Homestay" class="logo-img">
+                <span class="logo-text">Bintang Homestay</span>
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list d-flex mb-0">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">
+                            <i class="fas fa-home me-2"></i> Beranda
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/') }}#fasilitas" class="nav-link">
+                            <i class="fas fa-umbrella-beach me-2"></i> Fasilitas
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/') }}#kamar" class="nav-link">
+                            <i class="fas fa-bed me-2"></i> Kamar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/') }}#galeri" class="nav-link">
+                            <i class="fas fa-camera me-2"></i> Galeri
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/') }}#wisata" class="nav-link">
+                            <i class="fas fa-map-marked-alt me-2"></i> Wisata
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/') }}#testimoni" class="nav-link">
+                            <i class="fas fa-star me-2"></i> Testimoni
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/') }}#kontak" class="nav-link">
+                            <i class="fas fa-phone me-2"></i> Kontak
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-                <!-- Desktop Navigation -->
-                <div class="hidden lg:flex items-center space-x-2">
-                    <div class="flex space-x-1">
-                        <a href="/" class="nav-pill">
-                            <i class="fas fa-home mr-2"></i>Beranda
-                        </a>
-                        <a href="/#fasilitas" class="nav-pill">
-                            <i class="fas fa-umbrella-beach mr-2"></i>Fasilitas
-                        </a>
-                        <a href="/#kamar" class="nav-pill">
-                            <i class="fas fa-bed mr-2"></i>Kamar
-                        </a>
-                        <a href="/#galeri" class="nav-pill">
-                            <i class="fas fa-camera mr-2"></i>Galeri
-                        </a>
-                        <a href="/sitemap" class="nav-pill active">
-                            <i class="fas fa-sitemap mr-2"></i>Sitemap
-                        </a>
-                    </div>
-                    <a href="/#pemesanan" class="nav-button-ocean ml-2">
-                        <i class="fas fa-calendar-check mr-2"></i>Pesan
-                    </a>
-                </div>
+            <div class="d-flex align-items-center">
+                <a href="{{ url('/') }}#pemesanan" class="btn-book me-3 d-none d-md-inline-flex">
+                    <i class="fas fa-calendar-check me-2"></i> Pesan Sekarang
+                </a>
 
-                <!-- Mobile menu button -->
-                <div class="lg:hidden">
-                    <button @click="isOpen = true" class="text-blue-100 focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Mobile Navigation -->
-        <div class="mobile-menu-container" :class="{ 'show': isOpen }" x-show="isOpen" x-transition>
-            <div class="mobile-menu-overlay" @click="isOpen = false"></div>
-            <div class="mobile-menu" :class="{ 'open': isOpen }">
-                <button class="mobile-menu-close" @click="isOpen = false">
-                    <i class="fas fa-times"></i>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
                 </button>
-                
-                <div class="flex flex-col space-y-4 mt-12">
-                    <a href="/" @click="isOpen = false" class="mobile-nav-item">
-                        <i class="fas fa-home mr-3"></i>Beranda
-                    </a>
-                    <a href="/#fasilitas" @click="isOpen = false" class="mobile-nav-item">
-                        <i class="fas fa-umbrella-beach mr-3"></i>Fasilitas
-                    </a>
-                    <a href="/#kamar" @click="isOpen = false" class="mobile-nav-item">
-                        <i class="fas fa-bed mr-3"></i>Kamar
-                    </a>
-                    <a href="/#galeri" @click="isOpen = false" class="mobile-nav-item">
-                        <i class="fas fa-camera mr-3"></i>Galeri
-                    </a>
-                    <a href="/sitemap" @click="isOpen = false" class="mobile-nav-item active">
-                        <i class="fas fa-sitemap mr-3"></i>Sitemap
-                    </a>
-                    <a href="/#pemesanan" @click="isOpen = false" class="nav-button-ocean text-center mt-4 py-2">
-                        <i class="fas fa-calendar-check mr-2"></i>Pesan Sekarang
-                    </a>
-                </div>
             </div>
         </div>
     </header>
 
-    <!-- Header -->
-    <div class="header">
-        <div class="container">
-            <div class="header-content">
-                <h1>Kebijakan Privasi</h1>
-                <p class="last-updated">Terakhir diperbarui: 1 Januari 2023</p>
-            </div>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <a href="/" class="logo-brand">
+                <img src="images/bintang.png" alt="Bintang Homestay">
+                <span>Bintang Homestay</span>
+            </a>
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
+
+        <nav class="mobile-nav">
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item">
+                    <a href="/" class="mobile-nav-link">
+                        <i class="fas fa-home"></i> Beranda
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="{{ url('/') }}#fasilitas" class="mobile-nav-link">
+                        <i class="fas fa-umbrella-beach"></i> Fasilitas
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="{{ url('/') }}#kamar" class="mobile-nav-link">
+                        <i class="fas fa-bed"></i> Kamar
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="{{ url('/') }}#galeri" class="mobile-nav-link">
+                        <i class="fas fa-camera"></i> Galeri
+                    </a>
+                </li>
+                 <li class="mobile-nav-item">
+                    <a href="{{ url('/') }}#wisata" class="mobile-nav-link">
+                        <i class="fas fa-map-marked-alt"></i> Wisata
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="{{ url('/') }}#testimoni" class="mobile-nav-link">
+                        <i class="fas fa-star"></i> Testimoni
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="{{ url('/') }}#kontak" class="mobile-nav-link">
+                        <i class="fas fa-phone"></i> Kontak
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <a href="{{ url('/') }}#pemesanan" class="btn-book w-100 mt-3">
+            <i class="fas fa-calendar-check me-2"></i> Pesan Sekarang
+        </a>
     </div>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="card">
-            <h2>Menu Utama</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div>
+    <!-- Sitemap Header -->
+    <section class="sitemap-header">
+        <div class="sitemap-header-content" data-aos="fade-up">
+            <h1 class="sitemap-title">Peta Situs</h1>
+            <p class="last-updated">Navigasi lengkap website Bintang Homestay</p>
+        </div>
+    </section>
+
+    <!-- Sitemap Content -->
+    <main class="sitemap-container">
+        <article class="sitemap-content" data-aos="fade-up" data-aos-delay="100">
+            <div class="sitemap-grid">
+                <div class="sitemap-section">
                     <h3>Informasi</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/" class="sitemap-link"><i class="fas fa-home"></i>Beranda</a></li>
-                        <li><a href="/#fasilitas" class="sitemap-link"><i class="fas fa-umbrella-beach"></i>Fasilitas</a></li>
-                        <li><a href="/#kamar" class="sitemap-link"><i class="fas fa-bed"></i>Kamar</a></li>
-                        <li><a href="/#galeri" class="sitemap-link"><i class="fas fa-camera"></i>Galeri</a></li>
+                    <ul class="sitemap-links">
+                        <li>
+                            <a href="index.html" class="sitemap-link">
+                                <i class="fas fa-home"></i> Beranda
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html#fasilitas" class="sitemap-link">
+                                <i class="fas fa-umbrella-beach"></i> Fasilitas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html#kamar" class="sitemap-link">
+                                <i class="fas fa-bed"></i> Kamar
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html#galeri" class="sitemap-link">
+                                <i class="fas fa-camera"></i> Galeri
+                            </a>
+                        </li>
                     </ul>
                 </div>
-                <div>
-                    <h3>Layanan</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/#testimoni" class="sitemap-link"><i class="fas fa-star"></i>Testimoni</a></li>
-                        <li><a href="/#kontak" class="sitemap-link"><i class="fas fa-phone"></i>Kontak</a></li>
-                        <li><a href="/#pemesanan" class="sitemap-link"><i class="fas fa-calendar-check"></i>Pesan Kamar</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3>Legal</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/privacy-policy" class="sitemap-link"><i class="fas fa-shield-alt"></i>Privacy Policy</a></li>
-                        <li><a href="/terms-of-service" class="sitemap-link"><i class="fas fa-file-contract"></i>Terms of Service</a></li>
-                        <li><a href="/sitemap" class="sitemap-link"><i class="fas fa-sitemap"></i>Sitemap</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
 
-        <div class="card">
-            <h2>Mengapa Memilih Bintang Homestay?</h2>
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                <div>
-                    <div class="feature-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>Lokasi Strategis</h3>
-                    <p>Hanya beberapa menit dari pantai Watukarung yang indah</p>
+                <div class="sitemap-section">
+                    <h3>Layanan</h3>
+                    <ul class="sitemap-links">
+                        <li>
+                            <a href="index.html#testimoni" class="sitemap-link">
+                                <i class="fas fa-star"></i> Testimoni
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html#kontak" class="sitemap-link">
+                                <i class="fas fa-phone"></i> Kontak
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html#pemesanan" class="sitemap-link">
+                                <i class="fas fa-calendar-check"></i> Pesan Kamar
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <div>
-                    <div class="feature-icon">
-                        <i class="fas fa-coins"></i>
-                    </div>
-                    <h3>Harga Terjangkau</h3>
-                    <p>Kenyamanan premium dengan harga yang bersahabat</p>
-                </div>
-                <div>
-                    <div class="feature-icon">
-                        <i class="fas fa-smile"></i>
-                    </div>
-                    <h3>Pelayanan Ramah</h3>
-                    <p>Staf kami siap membuat pengalaman menginap Anda berkesan</p>
+
+                <div class="sitemap-section">
+                    <h3>Legal</h3>
+                    <ul class="sitemap-links">
+                        <li>
+                            <a href="privacy-policy.html" class="sitemap-link">
+                                <i class="fas fa-shield-alt"></i> Kebijakan Privasi
+                            </a>
+                        </li>
+                        <li>
+                            <a href="terms-of-service.html" class="sitemap-link">
+                                <i class="fas fa-file-contract"></i> Syarat & Ketentuan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="sitemap.html" class="sitemap-link">
+                                <i class="fas fa-sitemap"></i> Peta Situs
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </div>
+
+            <div class="features-section">
+                <h2>Mengapa Memilih Bintang Homestay?</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Lokasi Strategis</h3>
+                        <p>Hanya beberapa menit dari pantai Watukarung yang indah</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h3 class="feature-title">Harga Terjangkau</h3>
+                        <p>Kenyamanan premium dengan harga yang bersahabat</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-smile"></i>
+                        </div>
+                        <h3 class="feature-title">Pelayanan Ramah</h3>
+                        <p>Staf kami siap membuat pengalaman menginap Anda berkesan</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
 
     <!-- Footer -->
-    <div class="footer">
+    <footer class="footer">
         <div class="container">
-            <p>&copy; 2023 Bintang Homestay Watukarung. All rights reserved.</p>
-            <div class="flex justify-center space-x-6 mt-4">
-                <a href="/sitemap" class="text-white hover:text-blue-300">Sitemap</a>
-                <a href="/privacy-policy" class="text-white hover:text-blue-300">Privacy Policy</a>
-                <a href="/terms-of-service" class="text-white hover:text-blue-300">Terms of Service</a>
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="footer-logo">
+                        <img src="images/bintang.png" alt="Bintang Homestay">
+                        <span>Bintang Homestay</span>
+                    </div>
+                    <p class="footer-about">
+                        Penginapan nyaman dengan fasilitas lengkap di Pantai Watukarung, Pacitan. Memberikan pengalaman
+                        menginap terbaik dengan harga terjangkau.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="footer-social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="footer-social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="footer-social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
+                    <h3 class="footer-title">Link Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="/" class="footer-link">Beranda</a></li>
+                        <li><a href="{{ url('/') }}#fasilitas" class="footer-link">Fasilitas</a></li>
+                        <li><a href="{{ url('/') }}#kamar" class="footer-link">Kamar</a></li>
+                        <li><a href="{{ url('/') }}#galeri" class="footer-link">Galeri</a></li>
+                        <li><a href="{{ url('/') }}#wisata" class="footer-link">Wisata</a></li>
+                        <li><a href="{{ url('/') }}#testimoni" class="footer-link">Testimoni</a></li>
+                        <li><a href="{{ url('/') }}#kontak" class="footer-link">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 col-lg-3 mb-4 mb-md-0">
+                    <h3 class="footer-title">Kontak Kami</h3>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Jl. Pantai Watukarung No.123, Pacitan, Jawa Timur</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+62 812 3456 7890</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>bintang@homestay.com</span>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-lg-3">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p class="footer-about">Berlangganan newsletter kami untuk mendapatkan penawaran spesial dan
+                        informasi terbaru.</p>
+                    <form class="footer-newsletter">
+                        <input type="email" class="footer-input" placeholder="Alamat Email Anda" required>
+                        <button type="submit" class="footer-button">Berlangganan</button>
+                    </form>
+                </div>
             </div>
-            <div class="flex justify-center space-x-6 mt-4">
-                <a href="#" class="text-white hover:text-blue-300"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="text-white hover:text-blue-300"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-white hover:text-blue-300"><i class="fab fa-whatsapp"></i></a>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2023 Bintang Homestay Watukarung. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="/privacy-policy" class="footer-legal-link">Kebijakan Privasi</a>
+                    <a href="/terms-of-service" class="footer-legal-link">Syarat & Ketentuan</a>
+                    <a href="/sitemap" class="footer-legal-link">Sitemap</a>
+                </div>
             </div>
         </div>
-    </div>
+    </footer>
 
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/6289681891033" target="_blank"
-        class="fixed bottom-4 right-4 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition z-50"
-        style="width: 50px; height: 50px; font-size: 1.5rem;">
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/6281234567890" class="whatsapp-button" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        mobileMenuOverlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    mobileMenu.classList.remove('active');
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
