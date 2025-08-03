@@ -10,8 +10,4 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
-    build: {
-    outDir: 'public/build', // Pastikan ini sesuai
-    emptyOutDir: true,
-  },
 });
